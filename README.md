@@ -42,7 +42,7 @@
  * @method formatDate - 传入日期格式，返回已毫秒数做参数的日期格式化函数。详情见本函数。(format: string)=> (date: number)=> string
  */
 ```
-```
+
 ```Javascript
 /**  
  * @func formatDate
@@ -72,6 +72,7 @@
  * @method  random -  返回一个可以产生符合条件的随机数的函数。(min: number, max: number, float: boolean)=> ()=> number
  */
 ```
+
 #### 5. net
 ```Javascript
 /**
