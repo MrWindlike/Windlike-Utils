@@ -1,0 +1,37 @@
+{
+  "name": "windlike_utils",
+  "version": "1.0.0",
+  "description": "",
+  "main": "utils.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server --color --open",
+    "build": "webpack --color --progress"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wind1ike/Windlike-Utils.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wind1ike/Windlike-Utils/issues"
+  },
+  "homepage": "https://github.com/Wind1ike/Windlike-Utils#readme",
+  "devDependencies": {
+    "awesome-typescript-loader": "^3.4.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-runtime": "^6.26.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-uglify": "^3.0.0",
+    "source-map-loader": "^0.2.3",
+    "typescript": "^2.6.2",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.5"
+  }
+}
