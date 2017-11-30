@@ -1,10 +1,17 @@
 # Windlike-Utils
 ## 基于函数式编程的工具类函数
 
+<a href="https://www.npmjs.com/package/windlike-utils">npm v1.0.8</a>
+
 ### 版本信息
 #### v1.0.0 (2017/11/28 17:13)  
 * 项目第一次上线
 * 包含八大类型工具函数
+
+#### v1.0.8 (2017/11/30 19:28)  
+* 发布npm包
+* 添加README信息
+
 ### 模块目录
 
  * @obj
