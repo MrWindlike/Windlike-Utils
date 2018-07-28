@@ -1,5 +1,5 @@
 # Date
-```ts
+```js
 interface DateModule {
   createFormatDate: (format: string) => (date: number) => string;
 }
@@ -8,7 +8,7 @@ interface DateModule {
 ## createFormatDate
 ### Describe
 创建格式化日期的函数。
-```ts
+```js
 (format: string) => (date: number) => string;
 ```
 
@@ -19,7 +19,7 @@ interface DateModule {
 (```(ms: number) => string;```): 需要传入毫秒数作为参数的函数，返回格式化后的日期字符串。
 
 ### Example
-```ts
+```js
 const ms = 837043200000;  // 1996-07-11 08:00:00
 
 utils.date.createFormatDate('YYYY-MM-DD hh:mm:ss w')(ms);  // 1996-07-11 08:00:00 Thur.

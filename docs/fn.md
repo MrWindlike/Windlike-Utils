@@ -1,5 +1,5 @@
 # Fn
-```ts
+```js
 interface FunctionModule {
   curry: <Return>(fn: (...params: any[]) => Return) => CurryFunction<Return>;
   compose: <Return>(...fn: any[]) => (...params: any[]) => Return;
@@ -13,7 +13,7 @@ interface CurryFunction<Return> {
 ## curry
 ### Describe
 将函数柯里化。
-```ts
+```js
 interface CurryFunction<Return> {
   (...newParams: any[]): Return | CurryFunction<Return>
 }
@@ -28,7 +28,7 @@ interface CurryFunction<Return> {
 (```CurryFunction<Return>```): 返回新的函数或者结果。
 
 ### Example
-```ts
+```js
 const add = (a: number, b: number, c: number): number => a + b + c;
 const curryAdd: any = utils.fn.curry(add);
 
@@ -41,7 +41,7 @@ curryAdd(1)(2, 3);  // 6
 ## compose
 ### Describe
 将传入的函数从右往左组合成新的函数。
-```ts
+```js
 <Return>(...fn: any[]) => (...params: any[]) => Return;
 ```
 
@@ -52,7 +52,7 @@ curryAdd(1)(2, 3);  // 6
 (```(...params: any[]) => Return```): 组合成的新函数。
 
 ### Example
-```ts
+```js
 const plusOne = (num) => num * 1 + 1;
 const double = (num) => num * 2;
 const plusOneAndDouble = utils.fn.compose<number>(double, plusOne);  // 先加一后乘二

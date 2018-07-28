@@ -1,5 +1,5 @@
 # Array
-```ts
+```js
 interface ArrayModule {
   compareLength: (firstArray: any[], secondArray: any[]) => number;
   equal: <T>(firstArray: T[], secondArray: T[]) => boolean;
@@ -13,7 +13,7 @@ interface ArrayModule {
 ## compareLength
 ### Describe
 比较两个数组的长度。
-```ts
+```js
 (firstArray: any[], secondArray: any[]) => number;
 ```
 
@@ -25,7 +25,7 @@ interface ArrayModule {
 (number): 第一个数组长度与第二个数组长度的差值。
 
 ### Example
-```ts
+```js
 const firstArray = [1, 2, 3, {}];
 const secondArray = [{}, 3, 2, 1];
 const result: number = utils.array.compareLength(firstArray, secondArray);  // 0
@@ -34,7 +34,7 @@ const result: number = utils.array.compareLength(firstArray, secondArray);  // 0
 ## equal
 ### Describe
 比较两个数组的值，使用严格等于进行比较。
-```ts
+```js
 <T>(firstArray: T[], secondArray: T[]) => boolean;
 ```
 
@@ -46,14 +46,14 @@ const result: number = utils.array.compareLength(firstArray, secondArray);  // 0
 (boolean)
 
 ### Example
-```ts
+```js
 utils.array.equal([1, 2, { key: 'value' }], [1, 2, { key: 'value' }]);  // false
 ```
 
 ## deleteItem
 ### Describe
 删除数组里第一个找到的值，然后返回新数组。
-```ts
+```js
 <T>(array: T[], value: T) => T[];
 ```
 
@@ -65,7 +65,7 @@ utils.array.equal([1, 2, { key: 'value' }], [1, 2, { key: 'value' }]);  // false
 (T[]): 返回的新数组
 
 ### Example
-```ts
+```js
 const array = [1, 2, 3];
 
 utils.array.deleteItem(array, 2);  // [1, 3]
@@ -74,7 +74,7 @@ utils.array.deleteItem(array, 2);  // [1, 3]
 ## deleteItems
 ### Describe
 删除数组里所有与值相等的项，然后返回新数组。
-```ts
+```js
 <T>(array: T[], value: T) => T[];
 ```
 
@@ -95,7 +95,7 @@ utils.array.deleteItems(array, 9);  // [1, 6]
 ## deleteItemsExcept
 ### Describe
 删除数组里另外一个数组里没有的值。
-```ts
+```js
 <T>(array: T[], exceptArray: T[]) => T[];
 ```
 
@@ -107,7 +107,7 @@ utils.array.deleteItems(array, 9);  // [1, 6]
 (T[]): 返回的新数组
 
 ### Example
-```ts
+```js
 const array = [1, '9', 9, 6];
 
 utils.array.deleteItemsExcept(array, [1, 2, 3]);  // [1]
@@ -118,7 +118,7 @@ utils.array.deleteItemsExcept(array, [1, '9', 6]);  // [1, '9', 6]
 ## deleteItemsExcept
 ### Describe
 对原生数组```map```进行的封装。
-```ts
+```js
 <T>(fn: any) => (array: T[]) => T[]
 ```
 
@@ -129,7 +129,7 @@ utils.array.deleteItemsExcept(array, [1, '9', 6]);  // [1, '9', 6]
 (```(array: T[]) => T[]```): 需要传入数组做为参数的函数
 
 ### Example
-```ts
+```js
 const plusOne = (value) => 1 + value;
 const array = [1, 9, 9, 6];
 const plusOneMap = utils.array.map(plusOne);

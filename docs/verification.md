@@ -1,5 +1,5 @@
 # Verification
-```ts
+```js
 interface VerificationModule {
   readonly _phoneRE: RegExp;
   readonly _emailRE: RegExp;
@@ -16,7 +16,7 @@ type CheckType = 'phone' | 'email';
 ## checkRe
 ### Describe
 创建检测字符串是否匹配正则表达式的函数。
-```ts
+```js
 (re: RegExp) => (checkedStr: string) => boolean;
 ```
 
@@ -27,7 +27,7 @@ type CheckType = 'phone' | 'email';
 (```(checkedStr: string) => boolean```): 判断是否匹配正则的函数。
 
 ### Example
-```ts
+```js
 const checkFunction = utils.verification.checkRe(/<[\s\S]*?(script)[\s\S]*?>/);
 
 checkFunction('<script></script>');  // true
@@ -38,7 +38,7 @@ checkFunction('<script src="src/script.js"/>');  // true
 ## checkLength
 ### Describe
 创建检测字符串是否符合长度的函数。
-```ts
+```js
 (min: number, max: number) => (str: string) => boolean;
 ```
 
@@ -50,7 +50,7 @@ checkFunction('<script src="src/script.js"/>');  // true
 (```(str: string) => boolean```): 判断字符串是否符合长度的函数。
 
 ### Example
-```ts
+```js
 const checkStringLength = utils.verification.checkLength(1, 5);
 
 checkStringLength('windlike');  // false
@@ -60,7 +60,7 @@ checkStringLength('wind');  // true
 ## check
 ### Describe
 创建检测字符串是否符合响应类型的函数。
-```ts
+```js
 type CheckType = 'phone' | 'email';
 
 (checkType: CheckType) => (checkedStr: string) => boolean;
@@ -73,7 +73,7 @@ type CheckType = 'phone' | 'email';
 (```(checkedStr: string) => boolean```): 判断字符串是否符合类型的函数。
 
 ### Example
-```ts
+```js
 const checkPhone = utils.verification.check('phone');
 const checkEmail = utils.verification.check('email');
 

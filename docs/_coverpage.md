@@ -9,4 +9,4 @@
 
 
 [GitHub](https://github.com/MrWindlike/Windlike-Utils)
-[Get Started](#README)
+[Get Started](#windlike-utils-middot-)
