@@ -4,7 +4,7 @@ import string from '../string/index';
 /**
  * @obj
  * @desc 操作日期的相关方法。所有函数不会改变实参的值，会返回操作后的结果。
- * @method formatDate - 传入日期格式，返回已毫秒数做参数的日期格式化函数。详情见本函数。
+ * @method createFormatDate - 传入日期格式，返回已毫秒数做参数的日期格式化函数。详情见本函数。
  */
 const date: DateModule = {
   /**
@@ -15,7 +15,7 @@ const date: DateModule = {
                            'MM dd，yyyy hh:mm:ss'等等
  * @return {function} 返回一个需要传入毫秒数作为参数的函数。
    */
-  formatDate: function (format: string = 'YYYY/MM/DD hh:mm'): (ms: number) => string {
+  createFormatDate: function (format: string = 'YYYY/MM/DD hh:mm'): (ms: number) => string {
     let replaceFormat = string.replace(/[a-zA-Z]+/g);
 
     return (ms: number): string => {
@@ -30,7 +30,7 @@ const date: DateModule = {
         'W': 'getDay'
       };
       const weeks: ArrayObject = {
-        'w': ['Mon.', 'Tues.', 'Wed.', 'Thur.', 'Fri.', 'Sat.', 'Sun.'],
+        'w': ['Sun.', 'Mon.', 'Tues.', 'Wed.', 'Thur.', 'Fri.', 'Sat.'],
         'W': ['日', '一', '二', '三', '四', '五', '六'].map(week => `星期${week}`)
       };
       let date: Date = new Date(ms);

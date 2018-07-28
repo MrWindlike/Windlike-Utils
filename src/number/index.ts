@@ -6,7 +6,7 @@
  * @method  random -  返回一个可以产生符合条件的随机数的函数
  */
 const number: NumberModule = {
-  random: function (min: number = 0, max: number, float: boolean): () => number {
+  createRandomFunction: function (min: number = 0, max: number, float: boolean): () => number {
     return (): number => {
       if (min > max) {
         [min, max] = [max, min];
