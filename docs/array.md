@@ -11,20 +11,20 @@ interface ArrayModule {
 ```
 
 ## compareLength
-### Describe
+#### Describe
 比较两个数组的长度。
 ```js
 (firstArray: any[], secondArray: any[]) => number;
 ```
 
-### Arguments
+#### Arguments
   - firstArray(any[])
   - secondArray(any[])
 
-### Returns
+#### Returns
 (number): 第一个数组长度与第二个数组长度的差值。
 
-### Example
+#### Example
 ```js
 const firstArray = [1, 2, 3, {}];
 const secondArray = [{}, 3, 2, 1];
@@ -32,39 +32,39 @@ const result: number = utils.array.compareLength(firstArray, secondArray);  // 0
 ```
 
 ## equal
-### Describe
+#### Describe
 比较两个数组的值，使用严格等于进行比较。
 ```js
 <T>(firstArray: T[], secondArray: T[]) => boolean;
 ```
 
-### Arguments
+#### Arguments
   - firstArray(any[])
   - secondArray(any[])
 
-### Returns
+#### Returns
 (boolean)
 
-### Example
+#### Example
 ```js
 utils.array.equal([1, 2, { key: 'value' }], [1, 2, { key: 'value' }]);  // false
 ```
 
 ## deleteItem
-### Describe
+#### Describe
 删除数组里第一个找到的值，然后返回新数组。
 ```js
 <T>(array: T[], value: T) => T[];
 ```
 
-### Arguments
+#### Arguments
   - array(T[])
   - value(T): 要删除的值
 
-### Returns
+#### Returns
 (T[]): 返回的新数组
 
-### Example
+#### Example
 ```js
 const array = [1, 2, 3];
 
@@ -72,20 +72,20 @@ utils.array.deleteItem(array, 2);  // [1, 3]
 ```
 
 ## deleteItems
-### Describe
+#### Describe
 删除数组里所有与值相等的项，然后返回新数组。
 ```js
 <T>(array: T[], value: T) => T[];
 ```
 
-### Arguments
+#### Arguments
   - array(T[])
   - value(T): 要删除的值
 
-### Returns
+#### Returns
 (T[]): 返回的新数组
 
-### Example
+#### Example
 ```js
 const array = [1, 9, 9, 6];
 
@@ -93,20 +93,20 @@ utils.array.deleteItems(array, 9);  // [1, 6]
 ```
 
 ## deleteItemsExcept
-### Describe
+#### Describe
 删除数组里另外一个数组里没有的值。
 ```js
 <T>(array: T[], exceptArray: T[]) => T[];
 ```
 
-### Arguments
+#### Arguments
   - array(T[])
   - exceptArray(T[]): 要删除的值
 
-### Returns
+#### Returns
 (T[]): 返回的新数组
 
-### Example
+#### Example
 ```js
 const array = [1, '9', 9, 6];
 
@@ -116,19 +116,19 @@ utils.array.deleteItemsExcept(array, [1, '9', 6]);  // [1, '9', 6]
 ```
 
 ## deleteItemsExcept
-### Describe
+#### Describe
 对原生数组```map```进行的封装。
 ```js
 <T>(fn: any) => (array: T[]) => T[]
 ```
 
-### Arguments
+#### Arguments
   - fn: ```map```要执行的回调函数
 
-### Returns
+#### Returns
 (```(array: T[]) => T[]```): 需要传入数组做为参数的函数
 
-### Example
+#### Example
 ```js
 const plusOne = (value) => 1 + value;
 const array = [1, 9, 9, 6];

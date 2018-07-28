@@ -6,20 +6,20 @@ interface ObjectModule {
 ```
 
 ## valueEqual
-### Describe
+#### Describe
 判断两个对象的值是否相等，会遍历子对象。
 ```js
 (firstObj: AnyObject, secondObj: AnyObject) => boolean;
 ```
 
-### Arguments
+#### Arguments
   - firstObj(object)
   - secondObj(object)
 
-### Returns
+#### Returns
 (boolean)
 
-### Example
+#### Example
 ```js
 utils.object.valueEqual(
   {

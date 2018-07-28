@@ -14,19 +14,19 @@ type CheckType = 'phone' | 'email';
 ```
 
 ## checkRe
-### Describe
+#### Describe
 创建检测字符串是否匹配正则表达式的函数。
 ```js
 (re: RegExp) => (checkedStr: string) => boolean;
 ```
 
-### Arguments
+#### Arguments
   - re(RegExp)
 
-### Returns
+#### Returns
 (```(checkedStr: string) => boolean```): 判断是否匹配正则的函数。
 
-### Example
+#### Example
 ```js
 const checkFunction = utils.verification.checkRe(/<[\s\S]*?(script)[\s\S]*?>/);
 
@@ -36,20 +36,20 @@ checkFunction('<script src="src/script.js"/>');  // true
 ```
 
 ## checkLength
-### Describe
+#### Describe
 创建检测字符串是否符合长度的函数。
 ```js
 (min: number, max: number) => (str: string) => boolean;
 ```
 
-### Arguments
+#### Arguments
   - min(number)
   - max(number)
 
-### Returns
+#### Returns
 (```(str: string) => boolean```): 判断字符串是否符合长度的函数。
 
-### Example
+#### Example
 ```js
 const checkStringLength = utils.verification.checkLength(1, 5);
 
@@ -58,7 +58,7 @@ checkStringLength('wind');  // true
 ```
 
 ## check
-### Describe
+#### Describe
 创建检测字符串是否符合响应类型的函数。
 ```js
 type CheckType = 'phone' | 'email';
@@ -66,13 +66,13 @@ type CheckType = 'phone' | 'email';
 (checkType: CheckType) => (checkedStr: string) => boolean;
 ```
 
-### Arguments
+#### Arguments
   - checkType(CheckType): 类型，可选：'phone'、'email'
 
-### Returns
+#### Returns
 (```(checkedStr: string) => boolean```): 判断字符串是否符合类型的函数。
 
-### Example
+#### Example
 ```js
 const checkPhone = utils.verification.check('phone');
 const checkEmail = utils.verification.check('email');
