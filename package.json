@@ -5,10 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "dev": "tsc -w --downlevelIteration ",
+    "dev": "tsc -w --downlevelIteration",
+    "start": "node index",
     "build": "tsc && gulp build",
     "eslint": "eslint src --ext .ts",
-    "eslint:fix": "eslint src --ext .ts --fix"
+    "eslint:fix": "eslint src --ext .ts --fix",
+    "log": "conventional-changelog -p angular -i CHANGELOG.md -w -r 0"
   },
   "repository": {
     "type": "git",
