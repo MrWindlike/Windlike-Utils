@@ -13,7 +13,7 @@ interface Point {
 
 ## createSin
 #### Describe
-创建sin函数，y=f(x)=height * sin(width * x + offset)。
+创建sin函数，y=f(x)=height \* sin(width \* x + offset)。
 ```js
 (height: number, width: number, offset: number) => (x: number) => number;
 ```
