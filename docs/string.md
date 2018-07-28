@@ -1,5 +1,5 @@
 # String
-```ts
+```js
 interface StringModule {
   replace: (match: RegExp | string) => (str: string, substitute: any) => string;
   split: (char: string | RegExp) => (str: string) => string[];
@@ -10,7 +10,7 @@ interface StringModule {
 ## replace
 ### Describe
 对原生```replace```进行封装过的函数。
-```ts
+```js
 (match: RegExp | string) => (str: string, substitute: any) => string;
 ```
 
@@ -21,7 +21,7 @@ interface StringModule {
 (```(str: string, substitute: any) => string```): 传入原字符串和代替字符串，返回新字符串的函数。
 
 ### Example
-```ts
+```js
 const str = 'I\'m Windlike.';
 const replaceWindlike = utils.string.replace('Windlike');
 
@@ -31,7 +31,7 @@ replaceWindlike(str, 'I');  // I'm I.
 ## split
 ### Describe
 对原生```split```进行封装过的函数。
-```ts
+```js
 (char: string | RegExp) => (str: string) => string[];
 ```
 
@@ -42,7 +42,7 @@ replaceWindlike(str, 'I');  // I'm I.
 (```(str: string) => string[]```): 传入原字符串，返回分割后的数组的函数。
 
 ### Example
-```ts
+```js
 const str = 'I And You';
 const splitSpace = utils.string.split(' ');
 
@@ -52,7 +52,7 @@ splitSpace(str);  // ['I', 'And', 'You']
 ## match
 ### Describe
 对原生```match```进行封装过的函数。
-```ts
+```js
 (regexp: RegExp) => (str: string) => string[];
 ```
 
@@ -63,7 +63,7 @@ splitSpace(str);  // ['I', 'And', 'You']
 (```(str: string) => string[]```): 传入原字符串，返回匹配到的字符串数组的函数。
 
 ### Example
-```ts
+```js
 const re = /[\w]+/g;
 const str = 'I am a string.';
 const matchWork = utils.string.match(re);

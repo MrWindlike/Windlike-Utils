@@ -1,5 +1,5 @@
 # Object
-```ts
+```js
 interface ObjectModule {
   valueEqual: (firstObj: AnyObject, secondObj: AnyObject) => boolean
 }
@@ -8,7 +8,7 @@ interface ObjectModule {
 ## valueEqual
 ### Describe
 判断两个对象的值是否相等，会遍历子对象。
-```ts
+```js
 (firstObj: AnyObject, secondObj: AnyObject) => boolean;
 ```
 
@@ -20,7 +20,7 @@ interface ObjectModule {
 (boolean)
 
 ### Example
-```ts
+```js
 utils.object.valueEqual(
   {
     a: 1,

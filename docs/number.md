@@ -1,5 +1,5 @@
 # Number
-```ts
+```js
 interface NumberModule {
   createRandomFunction: (min: number, max: number, float: boolean) => () => number;
 }
@@ -8,7 +8,7 @@ interface NumberModule {
 ## createRandomFunction
 ### Describe
 创建产生随机数函数的函数。
-```ts
+```js
 (min: number, max: number, float: boolean) => () => number;
 ```
 
@@ -21,7 +21,7 @@ interface NumberModule {
 (```() => number```): 产生随机数的函数。
 
 ### Example
-```ts
+```js
 const createRandom = utils.number.createRandomFunction(100, 1, true);
 
 createRandom();
