@@ -14,10 +14,10 @@ let scripts = [
 	'verification.js',
 ]
 
-gp.task('concatUtils', function(){
+gp.task('concatUtils', function () {
 	// 合并
 	// gp.src(scripts).pipe(concat('utils.js')).pipe(gp.dest('./dist'));
 
 	// 合并并压缩
-    gp.src(scripts).pipe(concat('utils.js')).pipe(uglify()).pipe(gp.dest('./dist'));
+	gp.src(scripts).pipe(concat('utils.js')).pipe(uglify()).pipe(gp.dest('./dist'));
 })
