@@ -6,21 +6,21 @@ interface NumberModule {
 ```
 
 ## createRandomFunction
-### Describe
+#### Describe
 创建产生随机数函数的函数。
 ```js
 (min: number, max: number, float: boolean) => () => number;
 ```
 
-### Arguments
+#### Arguments
   - min(number)
   - max(number)
   - float(boolean): 是否有小数
 
-### Returns
+#### Returns
 (```() => number```): 产生随机数的函数。
 
-### Example
+#### Example
 ```js
 const createRandom = utils.number.createRandomFunction(100, 1, true);
 
