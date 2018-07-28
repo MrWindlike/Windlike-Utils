@@ -1,11 +1,11 @@
 import number from '../index';
 const {
-  random,
+  createRandomFunction,
 } = number;
 
 describe('Create a random number.', () => {
   test('Int between 1 to 100.', () => {
-    const createRandom = random(100, 1, false);
+    const createRandom = createRandomFunction(100, 1, false);
     const result = createRandom();
 
     expect(result).toBeGreaterThan(0);
@@ -14,7 +14,7 @@ describe('Create a random number.', () => {
   });
 
   test('Float between 1 to 100. ', () => {
-    const createRandom = random(100, 1, true);
+    const createRandom = createRandomFunction(100, 1, true);
     const result = createRandom();
 
     expect(result).toBeGreaterThan(0);
