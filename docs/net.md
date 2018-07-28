@@ -1,4 +1,4 @@
-## Net
+# Net
 ```ts
 interface NetModule {
   parseParams: (locationSearch: string) => object;
@@ -14,28 +14,28 @@ interface UrlInfoObject {
 }
 ```
 
-### parseParams
-#### Describe
+## parseParams
+### Describe
 解析地址参数字符串为对象的函数。
 ```ts
 (locationSearch: string) => object;
 ```
 
-#### Arguments
+### Arguments
   - locationSearch(string): 参数字符串，如'?key=value&search=windlike'。
 
-#### Returns
+### Returns
 (object): 参数对象。
 
-#### Example
+### Example
 ```ts
 const SEARCH = '?key=value&search=windlike';
 
 utils.net.parseParams(SEARCH);  // { key: 'value', search: 'windlike' }
 ```
 
-### parseParams
-#### Describe
+## parseParams
+### Describe
 解析地址的函数。
 ```ts
 interface UrlInfoObject {
@@ -49,13 +49,13 @@ interface UrlInfoObject {
 (url: string) => UrlInfoObject;
 ```
 
-#### Arguments
+### Arguments
   - url(string): 地址。
 
-#### Returns
+### Returns
 (UrlInfoObject): 含有地址信息的对象。
 
-#### Example
+### Example
 ```ts
 const URL = 'https://github.com/MrWindlike/Windlike-Utils?key=value';
 

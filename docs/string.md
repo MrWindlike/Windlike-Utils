@@ -1,4 +1,4 @@
-## String
+# String
 ```ts
 interface StringModule {
   replace: (match: RegExp | string) => (str: string, substitute: any) => string;
@@ -7,20 +7,20 @@ interface StringModule {
 }
 ```
 
-### replace
-#### Describe
+## replace
+### Describe
 对原生```replace```进行封装过的函数。
 ```ts
 (match: RegExp | string) => (str: string, substitute: any) => string;
 ```
 
-#### Arguments
+### Arguments
   - match(RegExp | string): 匹配符
 
-#### Returns
+### Returns
 (```(str: string, substitute: any) => string```): 传入原字符串和代替字符串，返回新字符串的函数。
 
-#### Example
+### Example
 ```ts
 const str = 'I\'m Windlike.';
 const replaceWindlike = utils.string.replace('Windlike');
@@ -28,20 +28,20 @@ const replaceWindlike = utils.string.replace('Windlike');
 replaceWindlike(str, 'I');  // I'm I.
 ```
 
-### split
-#### Describe
+## split
+### Describe
 对原生```split```进行封装过的函数。
 ```ts
 (char: string | RegExp) => (str: string) => string[];
 ```
 
-#### Arguments
+### Arguments
   - char(RegExp | string): 分割符
 
-#### Returns
+### Returns
 (```(str: string) => string[]```): 传入原字符串，返回分割后的数组的函数。
 
-#### Example
+### Example
 ```ts
 const str = 'I And You';
 const splitSpace = utils.string.split(' ');
@@ -49,20 +49,20 @@ const splitSpace = utils.string.split(' ');
 splitSpace(str);  // ['I', 'And', 'You']
 ```
 
-### match
-#### Describe
+## match
+### Describe
 对原生```match```进行封装过的函数。
 ```ts
 (regexp: RegExp) => (str: string) => string[];
 ```
 
-#### Arguments
+### Arguments
   - regexp(RegExp): 正则表达式
 
-#### Returns
+### Returns
 (```(str: string) => string[]```): 传入原字符串，返回匹配到的字符串数组的函数。
 
-#### Example
+### Example
 ```ts
 const re = /[\w]+/g;
 const str = 'I am a string.';
