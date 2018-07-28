@@ -1,4 +1,4 @@
-## Math
+# Math
 ```ts
 interface MathModule {
   createSin: (height: number, width: number, offset: number) => (x: number) => number;
@@ -11,30 +11,30 @@ interface Point {
 }
 ```
 
-### createSin
-#### Describe
+## createSin
+### Describe
 创建sin函数，y=f(x)=height*sin(width*x + offset)。
 ```ts
 (height: number, width: number, offset: number) => (x: number) => number;
 ```
 
-#### Arguments
+### Arguments
   - height(number)
   - width(number)
   - offset(number)
 
-#### Returns
+### Returns
 (```(x: number) => number```): 传入参数返回计算结果的函数。
 
-#### Example
+### Example
 ```ts
 const sin = utils.math.createSin(2, 2, Math.PI / 2);
 
 sin(Math.PI / 2);  // -2
 ```
 
-### createGetPointOnCircle
-#### Describe
+## createGetPointOnCircle
+### Describe
 创建获取点在圆上的位置的函数。
 ```ts
 interface Point {
@@ -45,15 +45,15 @@ interface Point {
 (radius: number, offsetX: number, offsetY: number) => (radian: number) => Point;
 ```
 
-#### Arguments
+### Arguments
   - radius(number): 半径
   - offsetX(number): X轴偏移
   - offsetY(number): Y轴偏移
 
-#### Returns
+### Returns
 (```(radian: number) => Point```): 传入弧度返回计算结果的函数。
 
-#### Example
+### Example
 ```ts
 const getPointOnCircle = utils.math.createGetPointOnCircle(4, 10, 5);
 

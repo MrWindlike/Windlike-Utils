@@ -1,13 +1,12 @@
 ![logo](_media/icon.svg)
 
-# docsify <small>1.3.3</small>
+# Windlike-Utils <small>2.0.0</small>
 
-> A magical documentation site generator.
+> 基于函数式编程思想的工具库
 
-- Simple and lightweight (~12kb gzipped)
-- Multiple themes
-- Not build static html files
+- 简单、方便
+- 多个模块
 
 
-[GitHub](https://github.com/QingWei-Li/docsify/)
-[Get Started](#quick-start)
+[GitHub](https://github.com/MrWindlike/Windlike-Utils)
+[Get Started](#README)

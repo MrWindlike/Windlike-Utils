@@ -1,25 +1,25 @@
-## Object
+# Object
 ```ts
 interface ObjectModule {
   valueEqual: (firstObj: AnyObject, secondObj: AnyObject) => boolean
 }
 ```
 
-### valueEqual
-#### Describe
+## valueEqual
+### Describe
 判断两个对象的值是否相等，会遍历子对象。
 ```ts
 (firstObj: AnyObject, secondObj: AnyObject) => boolean;
 ```
 
-#### Arguments
+### Arguments
   - firstObj(object)
   - secondObj(object)
 
-#### Returns
+### Returns
 (boolean)
 
-#### Example
+### Example
 ```ts
 utils.object.valueEqual(
   {
