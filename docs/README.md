@@ -13,4 +13,4 @@ npm install windlike-utils --save
 ```
 
 ## 贡献
-欢迎大家踊跃提交issues和PR:smile😄
+欢迎大家踊跃提交issues和PR😄
