@@ -1,6 +1,6 @@
 ![logo](_media/icon.svg)
 
-# Windlike-Utils <small>2.0.6</small>
+# Windlike-Utils <small>2.0.7</small>
 
 > 基于函数式编程思想的工具库
 
