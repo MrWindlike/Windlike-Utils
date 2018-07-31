@@ -2,11 +2,11 @@
 
 # Windlike-Utils <small>2.0.7</small>
 
-> A tool library developed based on functional programming ideas.
+> 基于函数式编程思想的工具库
 
-- Friendly editor prompt support
-- Simple & Convenience
-- Several Modules
+- 友好的编辑器提示支持
+- 简单、方便
+- 多个模块
 
 
 [GitHub](https://github.com/MrWindlike/Windlike-Utils)

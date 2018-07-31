@@ -7,16 +7,16 @@ interface DateModule {
 
 ## createFormatDate
 #### Describe
-Create a function to format date.
+创建格式化日期的函数。
 ```js
 (format: string) => (date: number) => string;
 ```
 
 #### Arguments
-  - format(string): Y: Year;M: Month;D: Day;h: Hour;m: Minute;s: Second;w: Week(en);W: Week(cn)
+  - format(string): 日期的格式。Y:年;M:月;D:日;h:时;m:分;s:秒;w:星期(英);W:星期(中)。
 
 #### Returns
-(```(ms: number) => string;```)
+(```(ms: number) => string;```): 需要传入毫秒数作为参数的函数，返回格式化后的日期字符串。
 
 #### Example
 ```js

@@ -7,7 +7,7 @@ interface ObjectModule {
 
 ## valueEqual
 #### Describe
-Determine if the values of two objects are equal.
+判断两个对象的值是否相等，会遍历子对象。
 ```js
 (firstObj: AnyObject, secondObj: AnyObject) => boolean;
 ```
