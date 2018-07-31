@@ -1,6 +1,6 @@
 ![logo](_media/icon.svg)
 
-# Windlike-Utils <small>2.0.7</small>
+# Windlike-Utils <small>2.0.8</small>
 
 > A tool library developed based on functional programming ideas.
 
