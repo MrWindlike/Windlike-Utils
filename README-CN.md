@@ -12,16 +12,16 @@ Windlike-Utils是一个基于函数式编程思想开发的一个工具库。
 npm install windlike-utils --save
 ```
 
-## [文档](https://mrwindlike.github.io/Windlike-Utils/#/)
-- [Array](https://mrwindlike.github.io/Windlike-Utils/#/array)
-- [Date](https://mrwindlike.github.io/Windlike-Utils/#/date)
-- [Function](https://mrwindlike.github.io/Windlike-Utils/#/fn)
-- [Math](https://mrwindlike.github.io/Windlike-Utils/#/math)
-- [Net](https://mrwindlike.github.io/Windlike-Utils/#/net)
-- [Number](https://mrwindlike.github.io/Windlike-Utils/#/number)
-- [Object](https://mrwindlike.github.io/Windlike-Utils/#/object)
-- [String](https://mrwindlike.github.io/Windlike-Utils/#/string)
-- [Verification](https://mrwindlike.github.io/Windlike-Utils/#/verification)
+## [文档](https://mrwindlike.github.io/Windlike-Utils/zh-cn/#/)
+- [Array](https://mrwindlike.github.io/Windlike-Utils/zh-cn/#/array)
+- [Date](https://mrwindlike.github.io/Windlike-Utils/zh-cn/#/date)
+- [Function](https://mrwindlike.github.io/Windlike-Utils/zh-cn/#/fn)
+- [Math](https://mrwindlike.github.io/Windlike-Utils/zh-cn/#/math)
+- [Net](https://mrwindlike.github.io/Windlike-Utils/zh-cn/#/net)
+- [Number](https://mrwindlike.github.io/Windlike-Utils/zh-cn/#/number)
+- [Object](https://mrwindlike.github.io/Windlike-Utils/zh-cn/#/object)
+- [String](https://mrwindlike.github.io/Windlike-Utils/zh-cn/#/string)
+- [Verification](https://mrwindlike.github.io/Windlike-Utils/zh-cn/#/verification)
 
 ## 贡献
 欢迎大家踊跃提交issues和PR😄
