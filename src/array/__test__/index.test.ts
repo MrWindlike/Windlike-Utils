@@ -37,6 +37,7 @@ describe('Compare Array\'s length.', () => {
 describe('Is Array\'s value Equal?', () => {
   test('Yes.', () => {
     expect(equal([1, 2, 3], [1, 2, 3])).toBeTruthy();
+    expect(equal([1, [2, 3], 4], [1, [2, 3], 4])).toBeTruthy();
   });
 
   test('No.', () => {
