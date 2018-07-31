@@ -12,7 +12,7 @@ interface ArrayModule {
 
 ## compareLength
 #### Describe
-Compare the length of two arrays.
+比较两个数组的长度。
 ```js
 (firstArray: any[], secondArray: any[]) => number;
 ```
@@ -22,7 +22,7 @@ Compare the length of two arrays.
   - secondArray(any[])
 
 #### Returns
-(number): The difference between the length of the first array and the length of the second array.
+(number): 第一个数组长度与第二个数组长度的差值。
 
 #### Example
 ```js
@@ -33,7 +33,7 @@ const result: number = utils.array.compareLength(firstArray, secondArray);  // 0
 
 ## equal
 #### Describe
-Compare the values of two arrays.
+比较两个数组的值，使用严格等于进行比较。
 ```js
 <T>(firstArray: T[], secondArray: T[]) => boolean;
 ```
@@ -53,17 +53,17 @@ utils.array.equal([1, 2, { key: 'value' }], [1, 2, { key: 'value' }]);  // false
 
 ## deleteItem
 #### Describe
-Delete the first item in the array equal to the value and return a new array.
+删除数组里第一个找到的值，然后返回新数组。
 ```js
 <T>(array: T[], value: T) => T[];
 ```
 
 #### Arguments
   - array(T[])
-  - value(T)
+  - value(T): 要删除的值
 
 #### Returns
-(T[])
+(T[]): 返回的新数组
 
 #### Example
 ```js
@@ -74,17 +74,17 @@ utils.array.deleteItem(array, 2);  // [1, 3]
 
 ## deleteItems
 #### Describe
-Delete the all items in the array equal to the value and return a new array.
+删除数组里所有与值相等的项，然后返回新数组。
 ```js
 <T>(array: T[], value: T) => T[];
 ```
 
 #### Arguments
   - array(T[])
-  - value(T)
+  - value(T): 要删除的值
 
 #### Returns
-(T[])
+(T[]): 返回的新数组
 
 #### Example
 ```js
@@ -95,17 +95,17 @@ utils.array.deleteItems(array, 9);  // [1, 6]
 
 ## deleteItemsExcept
 #### Describe
-Delete values that are not in another array in the array.
+删除数组里另外一个数组里没有的值。
 ```js
 <T>(array: T[], exceptArray: T[]) => T[];
 ```
 
 #### Arguments
   - array(T[])
-  - exceptArray(T[])
+  - exceptArray(T[]): 不要删除的值
 
 #### Returns
-(T[])
+(T[]): 返回的新数组
 
 #### Example
 ```js
@@ -118,15 +118,16 @@ utils.array.deleteItemsExcept(array, [1, '9', 6]);  // [1, '9', 6]
 
 ## deleteItemsExcept
 #### Describe
+对原生数组```map```进行的封装。
 ```js
 <T>(fn: any) => (array: T[]) => T[]
 ```
 
 #### Arguments
-  - fn: callback function
+  - fn: ```map```要执行的回调函数
 
 #### Returns
-(```(array: T[]) => T[]```)
+(```(array: T[]) => T[]```): 需要传入数组做为参数的函数
 
 #### Example
 ```js

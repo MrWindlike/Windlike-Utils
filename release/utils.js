@@ -1,3 +1,47 @@
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var Shape = /** @class */ (function () {
+    function Shape(shape) {
+        this.color = shape.color;
+    }
+    Shape.prototype.setColor = function (color) {
+        this.color = color;
+    };
+    return Shape;
+}());
+var Square = /** @class */ (function (_super) {
+    __extends(Square, _super);
+    function Square(square) {
+        var _this = _super.call(this, square) || this;
+        _this.type = 'square';
+        _this.width = square.width;
+        _this.height = square.height;
+        _this.area = square.width * square.height;
+        return _this;
+    }
+    return Square;
+}(Shape));
+var Circle = /** @class */ (function (_super) {
+    __extends(Circle, _super);
+    function Circle() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.type = 'circle';
+        return _this;
+    }
+    return Circle;
+}(Shape));
+function createShape(ctor, shape) {
+    return new ctor(shape);
+}
+//# sourceMappingURL=test.js.map
 "use strict";
 /// <reference path="./utils.d.ts"/>
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -51,8 +95,20 @@ var array = _this = {
             return false;
         }
         for (var i = 0; i < firstArray.length; i++) {
-            if (firstArray[i] !== secondArray[i]) {
+            var firstValue = firstArray[i];
+            var secondValue = secondArray[i];
+            if (typeof firstValue !== typeof secondValue) {
                 return false;
+            }
+            else {
+                if (firstValue instanceof Array && secondValue instanceof Array) {
+                    if (!_this.equal(firstValue, secondValue)) {
+                        return false;
+                    }
+                }
+                else if (firstArray[i] !== secondArray[i]) {
+                    return false;
+                }
             }
         }
         return true;

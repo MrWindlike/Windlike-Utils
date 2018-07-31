@@ -12,6 +12,7 @@ interface CurryFunction<Return> {
 
 ## curry
 #### Describe
+将函数柯里化。
 ```js
 interface CurryFunction<Return> {
   (...newParams: any[]): Return | CurryFunction<Return>
@@ -21,10 +22,10 @@ interface CurryFunction<Return> {
 ```
 
 #### Arguments
-  - fn(```(...params: any[]) => Return) => CurryFunction<Return>```)
+  - fn(```(...params: any[]) => Return) => CurryFunction<Return>```): 需要柯里化的函数。
 
 #### Returns
-(```CurryFunction<Return>```)
+(```CurryFunction<Return>```): 返回新的函数或者结果。
 
 #### Example
 ```js
@@ -39,16 +40,16 @@ curryAdd(1)(2, 3);  // 6
 
 ## compose
 #### Describe
-Compose the functions from right to left.
+将传入的函数从右往左组合成新的函数。
 ```js
 <Return>(...fn: any[]) => (...params: any[]) => Return;
 ```
 
 #### Arguments
-  - ...fn(any[])
+  - ...fn(any[]): 函数数组。
 
 #### Returns
-(```(...params: any[]) => Return```)
+(```(...params: any[]) => Return```): 组合成的新函数。
 
 #### Example
 ```js

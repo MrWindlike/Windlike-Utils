@@ -13,7 +13,7 @@ interface Point {
 
 ## createSin
 #### Describe
-y=f(x)=height \* sin(width \* x + offset)。
+创建sin函数，y=f(x)=height \* sin(width \* x + offset)。
 ```js
 (height: number, width: number, offset: number) => (x: number) => number;
 ```
@@ -24,7 +24,7 @@ y=f(x)=height \* sin(width \* x + offset)。
   - offset(number)
 
 #### Returns
-(```(x: number) => number```)
+(```(x: number) => number```): 传入参数返回计算结果的函数。
 
 #### Example
 ```js
@@ -35,7 +35,7 @@ sin(Math.PI / 2);  // -2
 
 ## createGetPointOnCircle
 #### Describe
-Create a function to get the point on the circle.
+创建获取点在圆上的位置的函数。
 ```js
 interface Point {
   x: number;
@@ -46,12 +46,12 @@ interface Point {
 ```
 
 #### Arguments
-  - radius(number)
-  - offsetX(number)
-  - offsetY(number)
+  - radius(number): 半径
+  - offsetX(number): X轴偏移
+  - offsetY(number): Y轴偏移
 
 #### Returns
-(```(radian: number) => Point```)
+(```(radian: number) => Point```): 传入弧度返回计算结果的函数。
 
 #### Example
 ```js

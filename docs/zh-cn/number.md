@@ -7,7 +7,7 @@ interface NumberModule {
 
 ## createRandomFunction
 #### Describe
-Create a function to generate a random number.
+创建产生随机数函数的函数。
 ```js
 (min: number, max: number, float: boolean) => () => number;
 ```
@@ -15,10 +15,10 @@ Create a function to generate a random number.
 #### Arguments
   - min(number)
   - max(number)
-  - float(boolean)
+  - float(boolean): 是否有小数
 
 #### Returns
-(```() => number```)
+(```() => number```): 产生随机数的函数。
 
 #### Example
 ```js
