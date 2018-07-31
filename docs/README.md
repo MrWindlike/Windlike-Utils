@@ -3,7 +3,7 @@
 Windlike-Utils is a tool library developed based on functional programming ideas.
 
 * **Modules:** Windlike-Utils divide the tool into several modules which like ```array```、```object```、```string``` and so on.It can be easily found and used.
-* **Functional:** Each function only has the same input parameters, and the output result is unique.Just like `y=f(x)` in mathematics.as long as `x` is unchanged, the output `y` is also unchanged.To ensure the uniqueness of the output and the reusability of the variables, Some dirty functions also do delayed output processing.For examples, ```number.random``` returns a function which can generate a random number, instead of the result of the random number.
+* **Functional:** Each function only has the same input parameters, and the output result is unique.Just like `y=f(x)` in mathematics.As long as `x` is unchanged, the output `y` is also unchanged.To ensure the uniqueness of the output and the reusability of the variables, Some dirty functions also do delayed output processing.For examples, ```number.random``` returns a function which can generate a random number, instead of the result of the random number.
 * **Immutable:** Any arguments entered is immutable and new results will be returned.
 
 ## Install
