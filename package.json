@@ -67,7 +67,7 @@
       "path": "./node_modules/cz-conventional-changelog"
     },
     "ghooks": {
-      "pre-commit": "npm run eslint && npm test",
+      "pre-commit": "yarn run eslint && yarn test",
       "commit-msg": "validate-commit-msg"
     }
   }
