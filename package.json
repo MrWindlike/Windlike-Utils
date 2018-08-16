@@ -1,13 +1,13 @@
 {
   "name": "windlike-utils",
-  "version": "2.0.0",
+  "version": "2.0.8",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "jest",
     "dev": "tsc -w --downlevelIteration",
     "start": "node index",
-    "build": "tsc && gulp build",
+    "build": "tsc -d && gulp build",
     "eslint": "eslint src --ext .ts",
     "eslint:fix": "eslint src --ext .ts --fix",
     "log": "conventional-changelog -p angular -i CHANGELOG.md -w -r 0"

@@ -15,6 +15,7 @@ type CheckType = 'phone' | 'email';
 
 ## checkRe
 #### Describe
+创建检测字符串是否匹配正则表达式的函数。
 ```js
 (re: RegExp) => (checkedStr: string) => boolean;
 ```
@@ -23,7 +24,7 @@ type CheckType = 'phone' | 'email';
   - re(RegExp)
 
 #### Returns
-(```(checkedStr: string) => boolean```)
+(```(checkedStr: string) => boolean```): 判断是否匹配正则的函数。
 
 #### Example
 ```js
@@ -36,6 +37,7 @@ checkFunction('<script src="src/script.js"/>');  // true
 
 ## checkLength
 #### Describe
+创建检测字符串是否符合长度的函数。
 ```js
 (min: number, max: number) => (str: string) => boolean;
 ```
@@ -45,7 +47,7 @@ checkFunction('<script src="src/script.js"/>');  // true
   - max(number)
 
 #### Returns
-(```(str: string) => boolean```)
+(```(str: string) => boolean```): 判断字符串是否符合长度的函数。
 
 #### Example
 ```js
@@ -57,6 +59,7 @@ checkStringLength('wind');  // true
 
 ## check
 #### Describe
+创建检测字符串是否符合响应类型的函数。
 ```js
 type CheckType = 'phone' | 'email';
 
@@ -64,10 +67,10 @@ type CheckType = 'phone' | 'email';
 ```
 
 #### Arguments
-  - checkType(CheckType): 'phone' | 'email'
+  - checkType(CheckType): 类型，可选：'phone'、'email'
 
 #### Returns
-(```(checkedStr: string) => boolean```)
+(```(checkedStr: string) => boolean```): 判断字符串是否符合类型的函数。
 
 #### Example
 ```js

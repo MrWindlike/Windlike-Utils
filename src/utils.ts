@@ -1,4 +1,4 @@
-/// <reference path="declare.d.ts"/>
+/// <reference path="./utils.d.ts"/>
 
 import array from './array/index';
 import date from './date/index';
@@ -23,6 +23,4 @@ import verification from './verification/index';
  * @part  string -  字符串
  * @part  verification -  验证
  */
-let utils = { array, date, fn, math, number, net, object, string, verification };
-
-export default utils;
+export { array, date, fn, math, number, net, object, string, verification };

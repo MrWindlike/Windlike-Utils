@@ -29,9 +29,21 @@ const array: ArrayModule = _this = {
     }
 
     for (let i = 0; i < firstArray.length; i++) {
-      if (firstArray[i] !== secondArray[i]) {
+      const firstValue = firstArray[i];
+      const secondValue = secondArray[i];
+
+      if (typeof firstValue !== typeof secondValue) {
         return false;
+      } else {
+        if (firstValue instanceof Array && secondValue instanceof Array) {
+          if (!_this.equal(firstValue, secondValue)) {
+            return false;
+          }
+        } else if (firstArray[i] !== secondArray[i]) {
+          return false;
+        }
       }
+
     }
 
     return true;

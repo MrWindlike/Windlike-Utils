@@ -1,58 +1,71 @@
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var Shape = /** @class */ (function () {
+    function Shape(shape) {
+        this.color = shape.color;
+    }
+    Shape.prototype.setColor = function (color) {
+        this.color = color;
+    };
+    return Shape;
+}());
+var Square = /** @class */ (function (_super) {
+    __extends(Square, _super);
+    function Square(square) {
+        var _this = _super.call(this, square) || this;
+        _this.type = 'square';
+        _this.width = square.width;
+        _this.height = square.height;
+        _this.area = square.width * square.height;
+        return _this;
+    }
+    return Square;
+}(Shape));
+var Circle = /** @class */ (function (_super) {
+    __extends(Circle, _super);
+    function Circle() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.type = 'circle';
+        return _this;
+    }
+    return Circle;
+}(Shape));
+function createShape(ctor, shape) {
+    return new ctor(shape);
+}
+//# sourceMappingURL=test.js.map
 "use strict";
-/// <reference path="declare.d.ts"/>
+/// <reference path="./utils.d.ts"/>
 Object.defineProperty(exports, "__esModule", { value: true });
 var index_1 = require("./array/index");
+exports.array = index_1.default;
 var index_2 = require("./date/index");
+exports.date = index_2.default;
 var index_3 = require("./fn/index");
-var index_4 = require("./number/index");
-var index_5 = require("./net/index");
-var index_6 = require("./object/index");
-var index_7 = require("./string/index");
-var index_8 = require("./verification/index");
-/**
- * @obj
- * @desc  工具实例。部分函数使用到ES6的语法，请确保你的浏览器支持。
- * @part  array -  数组
- * @part  date -  日期
- * @part  fn -  函数
- * @part  number -  数字
- * @part  net -  网络
- * @part  object -  对象
- * @part  string -  字符串
- * @part  verification -  验证
- */
-var utils = { array: index_1.default, date: index_2.default, fn: index_3.default, number: index_4.default, net: index_5.default, object: index_6.default, string: index_7.default, verification: index_8.default };
-index_6.default.valueEqual({
-    a: 1,
-    b: 2,
-}, {
-    a: 1,
-    b: '2',
-});
-exports.default = utils;
+exports.fn = index_3.default;
+var index_4 = require("./math/index");
+exports.math = index_4.default;
+var index_5 = require("./number/index");
+exports.number = index_5.default;
+var index_6 = require("./net/index");
+exports.net = index_6.default;
+var index_7 = require("./object/index");
+exports.object = index_7.default;
+var index_8 = require("./string/index");
+exports.string = index_8.default;
+var index_9 = require("./verification/index");
+exports.verification = index_9.default;
 //# sourceMappingURL=utils.js.map
 "use strict";
 /// <reference path="index.d.ts"/>
-var __read = (this && this.__read) || function (o, n) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator];
-    if (!m) return o;
-    var i = m.call(o), r, ar = [], e;
-    try {
-        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
-    }
-    catch (error) { e = { error: error }; }
-    finally {
-        try {
-            if (r && !r.done && (m = i["return"])) m.call(i);
-        }
-        finally { if (e) throw e.error; }
-    }
-    return ar;
-};
-var __spread = (this && this.__spread) || function () {
-    for (var ar = [], i = 0; i < arguments.length; i++) ar = ar.concat(__read(arguments[i]));
-    return ar;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * @obj
@@ -82,15 +95,27 @@ var array = _this = {
             return false;
         }
         for (var i = 0; i < firstArray.length; i++) {
-            if (firstArray[i] !== secondArray[i]) {
+            var firstValue = firstArray[i];
+            var secondValue = secondArray[i];
+            if (typeof firstValue !== typeof secondValue) {
                 return false;
+            }
+            else {
+                if (firstValue instanceof Array && secondValue instanceof Array) {
+                    if (!_this.equal(firstValue, secondValue)) {
+                        return false;
+                    }
+                }
+                else if (firstArray[i] !== secondArray[i]) {
+                    return false;
+                }
             }
         }
         return true;
     },
     /* 删除相关函数 */
     deleteItem: function (array, value) {
-        var tempArray = __spread(array);
+        var tempArray = array.slice();
         var index = tempArray.indexOf(value);
         if (index !== -1) {
             tempArray.splice(index, 1);
@@ -111,13 +136,13 @@ var array = _this = {
 exports.default = array;
 //# sourceMappingURL=index.js.map
 "use strict";
-/// <reference path="index.d.ts"/>
 Object.defineProperty(exports, "__esModule", { value: true });
+/// <reference path="index.d.ts"/>
 var index_1 = require("../string/index");
 /**
  * @obj
  * @desc 操作日期的相关方法。所有函数不会改变实参的值，会返回操作后的结果。
- * @method formatDate - 传入日期格式，返回已毫秒数做参数的日期格式化函数。详情见本函数。
+ * @method createFormatDate - 传入日期格式，返回已毫秒数做参数的日期格式化函数。详情见本函数。
  */
 var date = {
     /**
@@ -128,7 +153,7 @@ var date = {
                              'MM dd，yyyy hh:mm:ss'等等
    * @return {function} 返回一个需要传入毫秒数作为参数的函数。
      */
-    formatDate: function (format) {
+    createFormatDate: function (format) {
         if (format === void 0) { format = 'YYYY/MM/DD hh:mm'; }
         var replaceFormat = index_1.default.replace(/[a-zA-Z]+/g);
         return function (ms) {
@@ -143,7 +168,7 @@ var date = {
                 'W': 'getDay'
             };
             var weeks = {
-                'w': ['Mon.', 'Tues.', 'Wed.', 'Thur.', 'Fri.', 'Sat.', 'Sun.'],
+                'w': ['Sun.', 'Mon.', 'Tues.', 'Wed.', 'Thur.', 'Fri.', 'Sat.'],
                 'W': ['日', '一', '二', '三', '四', '五', '六'].map(function (week) { return "\u661F\u671F" + week; })
             };
             var date = new Date(ms);
@@ -173,26 +198,6 @@ exports.default = date;
 //# sourceMappingURL=index.js.map
 "use strict";
 /// <reference path="index.d.ts"/>
-var __read = (this && this.__read) || function (o, n) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator];
-    if (!m) return o;
-    var i = m.call(o), r, ar = [], e;
-    try {
-        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
-    }
-    catch (error) { e = { error: error }; }
-    finally {
-        try {
-            if (r && !r.done && (m = i["return"])) m.call(i);
-        }
-        finally { if (e) throw e.error; }
-    }
-    return ar;
-};
-var __spread = (this && this.__spread) || function () {
-    for (var ar = [], i = 0; i < arguments.length; i++) ar = ar.concat(__read(arguments[i]));
-    return ar;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * @obj
@@ -209,7 +214,7 @@ var fn = {
                 for (var _i = 0; _i < arguments.length; _i++) {
                     newParams[_i] = arguments[_i];
                 }
-                var allParams = __spread(params, newParams);
+                var allParams = params.concat(newParams);
                 if (allParams.length < paramsLength) {
                     return closure(allParams);
                 }
@@ -245,6 +250,24 @@ exports.default = fn;
 "use strict";
 /// <reference path="index.d.ts"/>
 Object.defineProperty(exports, "__esModule", { value: true });
+var math = {
+    createSin: function (height, width, offset) {
+        return function (x) { return height * Math.sin(width * x + offset); };
+    },
+    createGetPointOnCircle: function (radius, offsetX, offsetY) {
+        if (offsetX === void 0) { offsetX = 0; }
+        if (offsetY === void 0) { offsetY = 0; }
+        return function (radian) { return ({
+            x: offsetX + radius * Math.cos(radian),
+            y: offsetY + radius * Math.sin(radian),
+        }); };
+    }
+};
+exports.default = math;
+//# sourceMappingURL=index.js.map
+"use strict";
+/// <reference path="index.d.ts"/>
+Object.defineProperty(exports, "__esModule", { value: true });
 var index_1 = require("../string/index");
 var index_2 = require("../array/index");
 var index_3 = require("../fn/index");
@@ -276,8 +299,8 @@ var net = {
         return params;
     },
     parseUrl: function (url) {
-        var HOST_PORT_REGEXP = /^(http:\/\/|https:\/\/)[0-9a-zA-Z\.:]+/;
-        var HOST_REGEXP = /^(http:\/\/|https:\/\/)[0-9a-zA-Z\.]+/;
+        var HOST_PORT_REGEXP = /^(http:\/\/|https:\/\/)[0-9a-zA-Z.:]+/;
+        var HOST_REGEXP = /^(http:\/\/|https:\/\/)[0-9a-zA-Z.]+/;
         /* function */
         var first = function (arr) { return arr[0]; };
         var last = function (arr) { return arr[arr.length - 1]; };
@@ -316,22 +339,6 @@ exports.default = net;
 //# sourceMappingURL=index.js.map
 "use strict";
 /// <reference path="index.d.ts"/>
-var __read = (this && this.__read) || function (o, n) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator];
-    if (!m) return o;
-    var i = m.call(o), r, ar = [], e;
-    try {
-        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
-    }
-    catch (error) { e = { error: error }; }
-    finally {
-        try {
-            if (r && !r.done && (m = i["return"])) m.call(i);
-        }
-        finally { if (e) throw e.error; }
-    }
-    return ar;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * @obj
@@ -339,12 +346,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @method  random -  返回一个可以产生符合条件的随机数的函数
  */
 var number = {
-    random: function (min, max, float) {
+    createRandomFunction: function (min, max, float) {
         if (min === void 0) { min = 0; }
         return function () {
             var _a;
             if (min > max) {
-                _a = __read([max, min], 2), min = _a[0], max = _a[1];
+                _a = [max, min], min = _a[0], max = _a[1];
             }
             if (float || min % 1 || max % 1) {
                 return min + Math.random() * (max - min);
@@ -356,32 +363,6 @@ var number = {
 exports.default = number;
 //# sourceMappingURL=index.js.map
 "use strict";
-var __values = (this && this.__values) || function (o) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator], i = 0;
-    if (m) return m.call(o);
-    return {
-        next: function () {
-            if (o && i >= o.length) o = void 0;
-            return { value: o && o[i++], done: !o };
-        }
-    };
-};
-var __read = (this && this.__read) || function (o, n) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator];
-    if (!m) return o;
-    var i = m.call(o), r, ar = [], e;
-    try {
-        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
-    }
-    catch (error) { e = { error: error }; }
-    finally {
-        try {
-            if (r && !r.done && (m = i["return"])) m.call(i);
-        }
-        finally { if (e) throw e.error; }
-    }
-    return ar;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 /// <reference path="index.d.ts"/>
 /**
@@ -392,38 +373,28 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var _this = null;
 var object = _this = {
     valueEqual: function (firstObj, secondObj) {
-        var e_1, _a;
         var firstEntries = Object.entries(firstObj);
         var secondEntries = Object.entries(secondObj);
         if (firstEntries.length !== secondEntries.length) {
             return false;
         }
-        try {
-            for (var firstEntries_1 = __values(firstEntries), firstEntries_1_1 = firstEntries_1.next(); !firstEntries_1_1.done; firstEntries_1_1 = firstEntries_1.next()) {
-                var _b = __read(firstEntries_1_1.value, 2), key = _b[0], value = _b[1];
-                var firstValue = firstObj[key];
-                var secondValue = secondObj[key];
-                if (typeof firstValue !== typeof secondValue) {
+        for (var _i = 0, firstEntries_1 = firstEntries; _i < firstEntries_1.length; _i++) {
+            var key = firstEntries_1[_i][0];
+            var firstValue = firstObj[key];
+            var secondValue = secondObj[key];
+            if (typeof firstValue !== typeof secondValue) {
+                return false;
+            }
+            else if (typeof firstValue === 'object') {
+                if (!_this.valueEqual(firstValue, secondValue)) {
                     return false;
                 }
-                else if (typeof firstValue === 'object') {
-                    if (!_this.valueEqual(firstValue, secondValue)) {
-                        return false;
-                    }
-                }
-                else {
-                    if (firstValue !== secondValue) {
-                        return false;
-                    }
+            }
+            else {
+                if (firstValue !== secondValue) {
+                    return false;
                 }
             }
-        }
-        catch (e_1_1) { e_1 = { error: e_1_1 }; }
-        finally {
-            try {
-                if (firstEntries_1_1 && !firstEntries_1_1.done && (_a = firstEntries_1.return)) _a.call(firstEntries_1);
-            }
-            finally { if (e_1) throw e_1.error; }
         }
         return true;
     }
@@ -437,17 +408,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @obj
  * @desc 操作字符串的相关方法。所有函数不会改变实参的值，会返回操作后的结果。
  * @method replace - 传入匹配规则参数，返回一个符合改匹配规则的函数
- * @method escapedUnicode - 将形如'&#dddd;'(d为0到9)的Unicode转义成正常字符
  * @method split - 返回分割该字符的函数
  * @method match - 返回匹配该正则的函数
  */
-var string = {
+var _this = null;
+var string = _this = {
     replace: function (match) {
         return function (str, substitute) { return str.replace(match, substitute); };
-    },
-    escapedUnicode: function (str) {
-        var replaceUnicodeWithChar = this.replace(new RegExp(/&#(\d+);/g));
-        return replaceUnicodeWithChar(str, function (substring, unicode) { return String.fromCharCode(unicode); });
     },
     split: function (char) {
         return function (str) { return str.split(char); };
@@ -471,7 +438,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var _this = null;
 var verification = _this = {
     _phoneRE: /^(13[0-9]|15[012356789]|18[0-9]|17[678]|14[57])[0-9]{8}$/,
-    _emailRE: /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/,
+    _emailRE: /^([a-zA-Z0-9]+[_|_|.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|_|.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/,
     checkRe: function (re) {
         return function (checkedStr) {
             return re.test(checkedStr);
@@ -482,7 +449,7 @@ var verification = _this = {
         return function (str) { return str.length >= min && str.length <= max; };
     },
     check: function (checkType) {
-        return this.checkRe(this["_" + checkType + "RE"]);
+        return _this.checkRe(_this["_" + checkType + "RE"]);
     }
 };
 exports.default = verification;
