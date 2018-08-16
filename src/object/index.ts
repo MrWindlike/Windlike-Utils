@@ -32,6 +32,9 @@ const object: ObjectModule = _this = {
     }
 
     return true;
+  },
+  has: function (object: AnyObject, key: string): boolean {
+    return object[key] !== undefined;
   }
 };
 

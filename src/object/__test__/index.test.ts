@@ -1,6 +1,7 @@
 import object from '../index';
 const {
   valueEqual,
+  has
 } = object;
 
 describe('Is two object\'s values equal?', () => {
@@ -65,5 +66,21 @@ describe('Is two object\'s values equal?', () => {
         }
       )
     ).toBeFalsy();
+  });
+});
+
+describe('Is object has this key?', () => {
+  const object = { key: 'value', nonexistent: undefined };
+
+  test('Yes.', () => {
+    const result = has(object, 'key');
+
+    expect(result).toBeTruthy();
+  });
+
+  test('Yes.', () => {
+    const result = has(object, 'nonexistent');
+
+    expect(result).toBeFalsy();
   });
 });
