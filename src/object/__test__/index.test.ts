@@ -70,7 +70,7 @@ describe('Is two object\'s values equal?', () => {
 });
 
 describe('Is object has this key?', () => {
-  const object = { key: 'value' };
+  const object = { key: 'value', nonexistent: undefined };
 
   test('Yes.', () => {
     const result = has(object, 'key');
@@ -79,7 +79,7 @@ describe('Is object has this key?', () => {
   });
 
   test('Yes.', () => {
-    const result = has(object, 'windlike');
+    const result = has(object, 'nonexistent');
 
     expect(result).toBeFalsy();
   });
