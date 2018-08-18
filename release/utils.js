@@ -268,6 +268,31 @@ exports.default = math;
 "use strict";
 /// <reference path="index.d.ts"/>
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * @obj
+ * @desc  数字的相关方法。所有函数不会改变实参的值，会返回操作后的结果。
+ * @method  random -  返回一个可以产生符合条件的随机数的函数
+ */
+var number = {
+    createRandomFunction: function (min, max, float) {
+        if (min === void 0) { min = 0; }
+        return function () {
+            var _a;
+            if (min > max) {
+                _a = [max, min], min = _a[0], max = _a[1];
+            }
+            if (float || min % 1 || max % 1) {
+                return min + Math.random() * (max - min);
+            }
+            return min + Math.floor(Math.random() * (max - min + 1));
+        };
+    }
+};
+exports.default = number;
+//# sourceMappingURL=index.js.map
+"use strict";
+/// <reference path="index.d.ts"/>
+Object.defineProperty(exports, "__esModule", { value: true });
 var index_1 = require("../string/index");
 var index_2 = require("../array/index");
 var index_3 = require("../fn/index");
@@ -342,25 +367,24 @@ exports.default = net;
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * @obj
- * @desc  数字的相关方法。所有函数不会改变实参的值，会返回操作后的结果。
- * @method  random -  返回一个可以产生符合条件的随机数的函数
+ * @desc 操作字符串的相关方法。所有函数不会改变实参的值，会返回操作后的结果。
+ * @method replace - 传入匹配规则参数，返回一个符合改匹配规则的函数
+ * @method split - 返回分割该字符的函数
+ * @method match - 返回匹配该正则的函数
  */
-var number = {
-    createRandomFunction: function (min, max, float) {
-        if (min === void 0) { min = 0; }
-        return function () {
-            var _a;
-            if (min > max) {
-                _a = [max, min], min = _a[0], max = _a[1];
-            }
-            if (float || min % 1 || max % 1) {
-                return min + Math.random() * (max - min);
-            }
-            return min + Math.floor(Math.random() * (max - min + 1));
-        };
+var _this = null;
+var string = _this = {
+    replace: function (match) {
+        return function (str, substitute) { return str.replace(match, substitute); };
+    },
+    split: function (char) {
+        return function (str) { return str.split(char); };
+    },
+    match: function (regexp) {
+        return function (str) { return str.match(regexp); };
     }
 };
-exports.default = number;
+exports.default = string;
 //# sourceMappingURL=index.js.map
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -385,7 +409,7 @@ var object = _this = {
             if (typeof firstValue !== typeof secondValue) {
                 return false;
             }
-            else if (typeof firstValue === 'object') {
+            else if (typeof firstValue === 'object' && firstValue !== null) {
                 if (!_this.valueEqual(firstValue, secondValue)) {
                     return false;
                 }
@@ -397,33 +421,12 @@ var object = _this = {
             }
         }
         return true;
+    },
+    has: function (object, key) {
+        return object[key] !== undefined;
     }
 };
 exports.default = object;
-//# sourceMappingURL=index.js.map
-"use strict";
-/// <reference path="index.d.ts"/>
-Object.defineProperty(exports, "__esModule", { value: true });
-/**
- * @obj
- * @desc 操作字符串的相关方法。所有函数不会改变实参的值，会返回操作后的结果。
- * @method replace - 传入匹配规则参数，返回一个符合改匹配规则的函数
- * @method split - 返回分割该字符的函数
- * @method match - 返回匹配该正则的函数
- */
-var _this = null;
-var string = _this = {
-    replace: function (match) {
-        return function (str, substitute) { return str.replace(match, substitute); };
-    },
-    split: function (char) {
-        return function (str) { return str.split(char); };
-    },
-    match: function (regexp) {
-        return function (str) { return str.match(regexp); };
-    }
-};
-exports.default = string;
 //# sourceMappingURL=index.js.map
 "use strict";
 /// <reference path="index.d.ts"/>

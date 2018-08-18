@@ -51,3 +51,25 @@ utils.object.valueEqual(
 );  // false
 
 ```
+
+## has
+#### Describe
+判断一个对象是否有该属性
+```js
+(object: AnyObject, key: string) => boolean;
+```
+
+#### Arguments
+  - object(object)
+  - key(string)
+
+#### Returns
+(boolean)
+
+#### Example
+```js
+const object = { key: 'value', nonexistent: undefined };
+
+utils.object.has(object, 'key');  // true
+utils.object.has(object, 'nonexistent');  // false
+```

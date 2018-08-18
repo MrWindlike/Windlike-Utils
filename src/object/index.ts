@@ -20,7 +20,7 @@ const object: ObjectModule = _this = {
 
       if (typeof firstValue !== typeof secondValue) {
         return false;
-      } else if (typeof firstValue === 'object') {
+      } else if (typeof firstValue === 'object' && firstValue !== null) {
         if (!_this.valueEqual(firstValue, secondValue)) {
           return false;
         }
@@ -32,6 +32,9 @@ const object: ObjectModule = _this = {
     }
 
     return true;
+  },
+  has: function (object: AnyObject, key: string): boolean {
+    return object[key] !== undefined;
   }
 };
 
