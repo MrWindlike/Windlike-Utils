@@ -23,10 +23,12 @@ describe('Is two object\'s values equal?', () => {
         },
         b: 2,
         obj: {},
+        none: null,
       },
       {
         b: 2,
         obj: {},
+        none: null,
         a: 1,
         child: {
           key: 'value'
