@@ -38,6 +38,57 @@ const fn: FunctionModule = {
 
       return result;
     };
+  },
+  debounce: function <Return>(
+    fn: (...params: any[]) => Return,
+    wait: number,
+    immediate: boolean
+  ): Debouncer<Return> {
+    const now: () => number = Date.now.bind(Date);
+    let lastTime: number = 0;
+    let timer: number = null;
+    let params: IArguments = null;
+    let _this: Function | null = null;
+    let result: Return;
+
+    function later(): void {
+      const nowTime: number = now();
+
+      if (nowTime - lastTime < wait) {
+        const remainTime = wait - (nowTime - lastTime);
+
+        timer = setTimeout(later, remainTime);
+      } else {
+        timer = null;
+
+        debouncer.result = fn.apply(_this, params);
+      }
+    }
+
+    function execute(): (Return | void) {
+      lastTime = now();
+      _this = this;
+      params = arguments;
+
+      try {
+        if (immediate && timer === null) {
+          debouncer.result = fn.apply(_this, params);
+        }
+
+        return debouncer.result;
+      } finally {
+        if (timer === null) {
+          timer = setTimeout(later, wait);
+        }
+      }
+    }
+
+    const debouncer: Debouncer<Return> = {
+      execute,
+      result,
+    };
+
+    return debouncer;
   }
 };
 
