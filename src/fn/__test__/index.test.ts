@@ -3,6 +3,7 @@ const {
   curry,
   compose,
   debounce,
+  throttle,
 } = fn;
 
 test('Currying.', () => {
@@ -31,42 +32,105 @@ describe('Debounce', () => {
   }
 
   test('Immediate', (done) => {
-    const debouncer = debounce(plusOne, 500, true);
+    const executor = debounce(plusOne, 500, true);
     let result: number;
 
-    result = debouncer.execute(1) as number;
+    result = executor.execute(1) as number;
     expect(result).toBe(2);
 
     setTimeout(function () {
-      result = debouncer.execute(2) as number;
+      result = executor.execute(2) as number;
 
       expect(result).toBe(2);
     }, 200);
 
     setTimeout(function () {
-      result = debouncer.result;
+      result = executor.result;
       expect(result).toBe(3);
       done();
     }, 800);
   });
 
   test('Delay.', function (done) {
-    const debouncer = debounce(plusOne, 500, false);
+    const executor = debounce(plusOne, 500, false);
     let result: number;
 
-    result = debouncer.execute(1) as number;
-    expect(result).toBe(undefined);
+    result = executor.execute(1) as number;
+    expect(result).toBe(null);
 
     setTimeout(function () {
-      result = debouncer.execute(2) as number;
+      result = executor.execute(2) as number;
 
-      expect(result).toBe(undefined);
+      expect(result).toBe(null);
     }, 200);
 
     setTimeout(function () {
-      result = debouncer.result;
+      result = executor.result;
       expect(result).toBe(3);
       done();
     }, 800);
+  });
+});
+
+describe('Throttle.', () => {
+  function plusOne(number: number) {
+    return number + 1;
+  }
+
+  test('Execute Twice', () => {
+    const executor = throttle(plusOne, 300);
+    let result: number;
+
+    result = executor.execute(1);
+    expect(result).toBe(2);
+
+    setTimeout(function () {
+      result = executor.execute(2);
+      expect(result).toBe(2);
+    }, 100);
+
+    setTimeout(function () {
+      expect(result).toBe(3);
+    }, 400);
+  });
+
+  test('Execute Start', () => {
+    const executor = throttle(plusOne, 300, {
+      isExecuteAtStart: true,
+      isExecuteAtEnd: false,
+    });
+    let result: number;
+
+    result = executor.execute(1);
+    expect(result).toBe(2);
+
+    setTimeout(function () {
+      result = executor.execute(2);
+      expect(result).toBe(2);
+    }, 100);
+
+    setTimeout(function () {
+      expect(result).toBe(2);
+    }, 400);
+  });
+
+  test('Execute End', () => {
+    const executor = throttle(plusOne, 300, {
+      isExecuteAtStart: false,
+      isExecuteAtEnd: true,
+    });
+    let result: number;
+
+    result = executor.execute(1);
+    expect(result).toBe(null);
+
+    setTimeout(function () {
+      result = executor.execute(2);
+      expect(result).toBe(null);
+    }, 100);
+
+    setTimeout(function () {
+      expect(result).toBe(3);
+    }, 400);
   });
 });

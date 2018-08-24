@@ -19,14 +19,24 @@ interface FunctionModule {
     fn: (...params: any[]) => Return,
     wait: number,
     immediate: boolean
-  ) => Debouncer<Return>;
+  ) => Executor<Return>;
+  throttle: <Return>(
+    fn: (...params: any[]) => Return,
+    wait: number,
+    options?: ThrottleOptions
+  ) => Executor<Return>;
 }
 
 interface CurryFunction<Return> {
   (...newParams: any[]): Return | CurryFunction<Return>
 }
 
-interface Debouncer<Return> {
-  execute: (...params: any[]) => (Return | void);
+interface Executor<Return> {
+  execute: (...params: any[]) => (Return | null);
   result: Return;
+}
+
+interface ThrottleOptions {
+  isExecuteAtStart: boolean;  // 是否执行开始函数
+  isExecuteAtEnd: boolean;// 是否执行结尾函数
 }

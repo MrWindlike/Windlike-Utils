@@ -43,13 +43,12 @@ const fn: FunctionModule = {
     fn: (...params: any[]) => Return,
     wait: number,
     immediate: boolean
-  ): Debouncer<Return> {
+  ): Executor<Return> {
     const now: () => number = Date.now.bind(Date);
     let lastTime: number = 0;
     let timer: number = null;
     let params: IArguments = null;
     let _this: Function | null = null;
-    let result: Return;
 
     function later(): void {
       const nowTime: number = now();
@@ -59,13 +58,15 @@ const fn: FunctionModule = {
 
         timer = setTimeout(later, remainTime);
       } else {
-        timer = null;
-
         debouncer.result = fn.apply(_this, params);
+
+        timer = null;
+        _this = null;
+        params = null;
       }
     }
 
-    function execute(): (Return | void) {
+    function execute(): (Return | null) {
       lastTime = now();
       _this = this;
       params = arguments;
@@ -83,12 +84,58 @@ const fn: FunctionModule = {
       }
     }
 
-    const debouncer: Debouncer<Return> = {
+    const debouncer: Executor<Return> = {
       execute,
-      result,
+      result: null,
     };
 
     return debouncer;
+  },
+  throttle: function <Return>(
+    fn: (...params: any[]) => Return,
+    wait: number,
+    {
+      isExecuteAtStart = true,
+      isExecuteAtEnd = true,
+    }: ThrottleOptions = {
+      isExecuteAtStart: true,
+      isExecuteAtEnd: true,
+    }
+  ): Executor<Return> {
+    let timer: number = null;
+    let _this: Function = null;
+    let params: IArguments = null;
+
+    function execute(): (Return | null) {
+      _this = this;
+      params = arguments;
+
+      if (isExecuteAtStart && timer === null) {
+        executor.result = fn.apply(_this, params);
+        _this = null;
+        params = null;
+      }
+
+      if (isExecuteAtEnd) {
+        if (timer === null) {
+          timer = setTimeout(function () {
+            executor.result = fn.apply(_this, params);
+            _this = null;
+            params = null;
+            timer = null;
+          }, wait);
+        }
+      }
+
+      return executor.result;
+    }
+
+    const executor: Executor<Return> = {
+      execute,
+      result: null
+    };
+
+    return executor;
   }
 };
 
