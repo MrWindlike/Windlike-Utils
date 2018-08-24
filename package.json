@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "debug": "node --inspect-brk node_modules/jest/bin/jest.js --runInBand",
     "dev": "tsc -w --downlevelIteration",
     "start": "node index",
     "build": "git pull && tsc -d && gulp build",
