@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "debug": "node --inspect-brk node_modules/jest/bin/jest.js --runInBand",
     "dev": "tsc -w --downlevelIteration",
     "start": "node index",
-    "build": "git pull && tsc -d && gulp build",
+    "build": "tsc -d && gulp build",
     "eslint": "eslint src --ext .ts",
     "eslint:fix": "eslint src --ext .ts --fix",
     "log": "conventional-changelog -p angular -i CHANGELOG.md -w -r 0",
