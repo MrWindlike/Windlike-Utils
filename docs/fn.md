@@ -88,7 +88,7 @@ interface Executor<Return> {
 #### Example
 ```js
 const executor = utils.fn.debounce(
-  fetch(),
+  fetch,
   300,
   false
 );
@@ -134,7 +134,7 @@ interface Executor<Return> {
 #### Example
 ```js
 const executor = utils.fn.throttle(
-  fetch(),
+  fetch,
   300,
   {
     isExecuteAtStart: true,
