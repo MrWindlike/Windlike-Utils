@@ -136,7 +136,7 @@ utils.array.deleteItemsExcept(array, [1, 9, 3]);  // [1, 9]
 utils.array.deleteItemsExcept(array, [1, '9', 6]);  // [1, '9', 6]
 ```
 
-## deleteItemsExcept
+## map
 #### Describe
 ```js
 <T>(fn: any) => (array: T[]) => T[]
