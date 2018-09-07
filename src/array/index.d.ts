@@ -10,6 +10,8 @@
  */
 interface ArrayModule {
   compareLength: (firstArray: any[], secondArray: any[]) => number;
+  shallowCompare: <T>(firstArray: T[], secondArray: T[]) => boolean;
+  deepCompare: <T>(firstArray: T[], secondArray: T[]) => boolean;
   equal: <T>(firstArray: T[], secondArray: T[]) => boolean;
   deleteItem: <T>(array: T[], value: T) => T[];
   deleteItems: <T>(array: T[], value: T) => T[];

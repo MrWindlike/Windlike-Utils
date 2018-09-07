@@ -1,70 +1,107 @@
 import object from '../index';
-const {
-  valueEqual,
-  has
-} = object;
+const { shallowCompare, deepCompare, has } = object;
+
+describe('Shallow compare.', () => {
+  test('Equal.', () => {
+    const obj = {
+      key: 'value',
+      a: 1,
+      b: 2
+    };
+    const anotherObj = {
+      a: 1,
+      key: 'value',
+      b: 2
+    };
+
+    expect(shallowCompare(obj, anotherObj)).toBeTruthy();
+  });
+
+  test('Not Equal.', () => {
+    const obj = {
+      key: 'value',
+      a: 1,
+      b: 2
+    };
+
+    expect(shallowCompare(obj, {
+      a: 1,
+      b: 2,
+      child: {}
+    })).toBeFalsy();
+    expect(shallowCompare(obj, {
+      a: 1,
+      b: 2,
+      child: {}
+    })).toBeFalsy();
+  });
+});
 
 describe('Is two object\'s values equal?', () => {
   test('Yes.', () => {
-    expect(valueEqual(
-      {
-        a: 1,
-        b: 2,
-      },
-      {
-        b: 2,
-        a: 1,
-      },
-    )).toBeTruthy();
-    expect(valueEqual(
-      {
-        a: 1,
-        child: {
-          key: 'value'
+    expect(
+      deepCompare(
+        {
+          a: 1,
+          b: 2
         },
-        b: 2,
-        obj: {},
-        none: null,
-      },
-      {
-        b: 2,
-        obj: {},
-        none: null,
-        a: 1,
-        child: {
-          key: 'value'
+        {
+          b: 2,
+          a: 1
+        }
+      )
+    ).toBeTruthy();
+    expect(
+      deepCompare(
+        {
+          a: 1,
+          child: {
+            key: 'value'
+          },
+          b: 2,
+          obj: {},
+          none: null
         },
-      },
-    )).toBeTruthy();
+        {
+          b: 2,
+          obj: {},
+          none: null,
+          a: 1,
+          child: {
+            key: 'value'
+          }
+        }
+      )
+    ).toBeTruthy();
   });
 
   test('No.', () => {
     expect(
-      valueEqual(
+      deepCompare(
         {
           a: 1,
-          b: 2,
+          b: 2
         },
         {
           a: 1,
-          b: '2',
+          b: '2'
         }
       )
     ).toBeFalsy();
 
     expect(
-      valueEqual(
+      deepCompare(
         {
           a: 1,
           b: 2,
-          child: {},
+          child: {}
         },
         {
           b: 2,
           a: 1,
           child: {
             key: 'value'
-          },
+          }
         }
       )
     ).toBeFalsy();
