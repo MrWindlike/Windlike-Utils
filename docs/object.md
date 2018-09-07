@@ -5,7 +5,7 @@ interface ObjectModule {
 }
 ```
 
-## valueEqual
+## shallowCompare
 #### Describe
 Determine if the values of two objects are equal.
 ```js
@@ -21,7 +21,55 @@ Determine if the values of two objects are equal.
 
 #### Example
 ```js
-utils.object.valueEqual(
+utils.object.shallowCompare(
+  {
+    a: 1,
+    b: 2,
+  },
+  {
+    b: 2,
+    a: 1,
+  },
+);  // true
+
+utils.object.shallowCompare(
+  {
+    a: 1,
+    child: {
+      key: 'value'
+    },
+    b: 2,
+    obj: {},
+  },
+  {
+    b: 2,
+    obj: {},
+    a: 1,
+    child: {
+      key: 'value'
+    },
+  },
+);  // false
+
+```
+
+## deepCompare
+#### Describe
+Determine if the values of two objects are equal.
+```js
+(firstObj: AnyObject, secondObj: AnyObject) => boolean;
+```
+
+#### Arguments
+  - firstObj(object)
+  - secondObj(object)
+
+#### Returns
+(boolean)
+
+#### Example
+```js
+utils.object.deepCompare(
   {
     a: 1,
     child: {
@@ -39,16 +87,6 @@ utils.object.valueEqual(
     },
   },
 );  // true
-utils.object.valueEqual(
-  {
-    a: 1,
-    b: 2,
-  },
-  {
-    a: 1,
-    b: '2',
-  }
-);  // false
 
 ```
 

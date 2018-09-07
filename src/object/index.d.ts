@@ -4,6 +4,7 @@
  * @method valueEqual - 判断两个对象的值是否相等
  */
 interface ObjectModule {
-  valueEqual: (firstObj: AnyObject, secondObj: AnyObject) => boolean;
+  shallowCompare: (firstObj: AnyObject, secondObj: AnyObject) => boolean;
+  deepCompare: (firstObj: AnyObject, secondObj: AnyObject) => boolean;
   has: (object: AnyObject, key: string) => boolean;
 }

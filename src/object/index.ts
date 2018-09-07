@@ -5,8 +5,21 @@
  * @method valueEqual - 判断两个对象的值是否相等
  */
 let _this: ObjectModule = null;
-const object: ObjectModule = _this = {
-  valueEqual: function (firstObj: AnyObject, secondObj: AnyObject): boolean {
+const object: ObjectModule = (_this = {
+  shallowCompare: function (firstObj: AnyObject, secondObj: AnyObject): boolean {
+    for (let key in firstObj) {
+      if (
+        !firstObj.hasOwnProperty(key) ||
+        !secondObj.hasOwnProperty(key) ||
+        firstObj[key] !== secondObj[key]
+      ) {
+        return false;
+      }
+    }
+
+    return true;
+  },
+  deepCompare: function (firstObj: AnyObject, secondObj: AnyObject): boolean {
     const firstEntries: any[] = Object.entries(firstObj);
     const secondEntries: any[] = Object.entries(secondObj);
 
@@ -21,7 +34,7 @@ const object: ObjectModule = _this = {
       if (typeof firstValue !== typeof secondValue) {
         return false;
       } else if (typeof firstValue === 'object' && firstValue !== null) {
-        if (!_this.valueEqual(firstValue, secondValue)) {
+        if (!_this.deepCompare(firstValue, secondValue)) {
           return false;
         }
       } else {
@@ -36,6 +49,6 @@ const object: ObjectModule = _this = {
   has: function (object: AnyObject, key: string): boolean {
     return object[key] !== undefined;
   }
-};
+});
 
 export default object;

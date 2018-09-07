@@ -7,6 +7,7 @@
 interface MathModule {
   createSin: (height: number, width: number, offset: number) => (x: number) => number;
   createGetPointOnCircle: (radius: number, offsetX: number, offsetY: number) => (radian: number) => Point;
+  add: (...numbers: number[]) => number;
 }
 
 interface Point {

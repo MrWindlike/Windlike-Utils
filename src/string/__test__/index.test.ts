@@ -30,7 +30,7 @@ test('Match string.', () => {
   const matchWork = match(re);
   const result = matchWork(str);
 
-  expect(array.equal(result, ['I', 'am', 'a', 'string'])).toBeTruthy();
+  expect(array.shallowCompare(result, ['I', 'am', 'a', 'string'])).toBeTruthy();
 
 });
 

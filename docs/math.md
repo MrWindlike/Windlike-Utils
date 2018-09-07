@@ -59,3 +59,21 @@ const getPointOnCircle = utils.math.createGetPointOnCircle(4, 10, 5);
 
 getPointOnCircle(0);  // { x: 14, y: 5 }
 ```
+
+## add
+#### Describe
+add the incoming parameters together, and return the result.
+```js
+(...numbers: number[])=> number;
+```
+
+#### Arguments
+  - ...numbers
+
+#### Returns
+(```number```)
+
+#### Example
+```js
+utils.math.add(0.1, 0.2);  // 0.3
+```

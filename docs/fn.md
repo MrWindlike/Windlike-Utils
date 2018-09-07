@@ -59,3 +59,92 @@ const plusOneAndDouble = utils.fn.compose<number>(double, plusOne);  // 先加�
 plusOneAndDouble(1);  // 4
 plusOneAndDouble(2);  // 6
 ```
+
+## debounce
+#### Describe
+Change multiple consecutive executions over a period of time.
+```js
+<Return>(
+    fn: (...params: any[]) => Return,
+    wait: number,
+    immediate: boolean
+  ) => Executor<Return>;
+```
+
+#### Arguments
+  - fn
+  - wait
+  - immediate: is execute immediately?
+
+#### Returns
+```
+interface Executor<Return> {
+  execute: (...params: any[]) => (Return | null);
+  result: Return;
+}
+```
+`Executor<Return>`
+
+#### Example
+```js
+const executor = utils.fn.debounce(
+  fetch(),
+  300,
+  false
+);
+
+input.addEvetListener('input', function(e) {
+  const result = executor.execute('/api');
+});
+
+const result = excutor.result;  // get current result
+```
+
+## throttle
+#### Describe
+Reduce the frequency of execution
+
+```js
+interface ThrottleOptions {
+  isExecuteAtStart: boolean;  // default is true
+  isExecuteAtEnd: boolean;  // default is true
+}
+
+<Return>(
+    fn: (...params: any[]) => Return,
+    wait: number,
+    options?: ThrottleOptions
+  ) => Executor<Return>;
+```
+
+#### Arguments
+  - fn
+  - wait
+  - options?
+
+#### Returns
+```
+interface Executor<Return> {
+  execute: (...params: any[]) => (Return | null);
+  result: Return;
+}
+```
+`Executor<Return>`
+
+#### Example
+```js
+const executor = utils.fn.throttle(
+  fetch(),
+  300,
+  {
+    isExecuteAtStart: true,
+    isExecuteAtEnd: false,
+  }
+);
+
+input.addEvetListener('click', function(e) {
+  const result = executor.execute('/api');
+});
+
+const result = excutor.result;  // get current result
+```

@@ -10,7 +10,7 @@ test('Parse URL', () => {
   const result = parseUrl(URL);
 
   expect(
-    object.valueEqual(
+    object.deepCompare(
       result,
       {
         url: URL,
@@ -30,7 +30,7 @@ test('Parse params.', () => {
   const result = parseParams(SEARCH);
 
   expect(
-    object.valueEqual(
+    object.deepCompare(
       result,
       {
         key: 'value',

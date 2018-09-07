@@ -2,6 +2,7 @@ import math from '../index';
 const {
   createSin,
   createGetPointOnCircle,
+  add,
 } = math;
 
 describe('Sin.', () => {
@@ -25,4 +26,10 @@ describe('Get point on the circle.', () => {
     expect(point.x).toBe(10);
     expect(point.y).toBe(9);
   });
+});
+
+test('Add', function () {
+  expect(add(0.1, 0.2)).toBe(0.3);
+  expect(add(0.1, 0.2, 0.2, 0.1)).toBe(0.6);
+  expect(add(1, 1.0)).toBe(2);
 });

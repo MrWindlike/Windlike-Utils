@@ -1,15 +1,15 @@
 declare interface ArrayObject {
-	[prop: string]: any[]
+  [prop: string]: any[];
 }
 
 declare interface StringObject {
-	[prop: string]: string
+  [prop: string]: string;
 }
 
-declare interface AnyObject {
-	[prop: string]: any
+declare interface AnyObject extends Object {
+  [prop: string]: any;
 }
 
 declare interface Fn<Return> {
-	(...params: any[]): Return
+  (...params: any[]): Return;
 }
