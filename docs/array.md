@@ -31,7 +31,7 @@ const secondArray = [{}, 3, 2, 1];
 const result: number = utils.array.compareLength(firstArray, secondArray);  // 0
 ```
 
-## equal
+## shallowCompare
 #### Describe
 Compare the values of two arrays.
 ```js
@@ -47,8 +47,28 @@ Compare the values of two arrays.
 
 #### Example
 ```js
-utils.array.equal([1, 2], [1, 2]);  // true
-utils.array.equal([1, 2, { key: 'value' }], [1, 2, { key: 'value' }]);  // false
+utils.array.shallowCompare([1, 2], [1, 2]);  // true
+utils.array.shallowCompare([1, 2, { key: 'value' }], [1, 2, { key: 'value' }]);  // false
+```
+
+## deepCompare
+#### Describe
+Compare the values of two arrays.
+```js
+<T>(firstArray: T[], secondArray: T[]) => boolean;
+```
+
+#### Arguments
+  - firstArray(any[])
+  - secondArray(any[])
+
+#### Returns
+(boolean)
+
+#### Example
+```js
+utils.array.shallowCompare([1, 2], [1, 2]);  // true
+utils.array.shallowCompare([1, 2, { key: 'value' }], [1, 2, { key: 'value' }]);  // true
 ```
 
 ## deleteItem
