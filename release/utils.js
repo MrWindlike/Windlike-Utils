@@ -1,47 +1,3 @@
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var Shape = /** @class */ (function () {
-    function Shape(shape) {
-        this.color = shape.color;
-    }
-    Shape.prototype.setColor = function (color) {
-        this.color = color;
-    };
-    return Shape;
-}());
-var Square = /** @class */ (function (_super) {
-    __extends(Square, _super);
-    function Square(square) {
-        var _this = _super.call(this, square) || this;
-        _this.type = 'square';
-        _this.width = square.width;
-        _this.height = square.height;
-        _this.area = square.width * square.height;
-        return _this;
-    }
-    return Square;
-}(Shape));
-var Circle = /** @class */ (function (_super) {
-    __extends(Circle, _super);
-    function Circle() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.type = 'circle';
-        return _this;
-    }
-    return Circle;
-}(Shape));
-function createShape(ctor, shape) {
-    return new ctor(shape);
-}
-//# sourceMappingURL=test.js.map
 "use strict";
 /// <reference path="./utils.d.ts"/>
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -67,16 +23,7 @@ exports.verification = index_9.default;
 "use strict";
 /// <reference path="index.d.ts"/>
 Object.defineProperty(exports, "__esModule", { value: true });
-/**
- * @obj
- * @desc 操作数组的相关方法。所有函数不会改变实参，会返回操作后的结果。
- * @method compareLength -  比较两个数组的长度
- * @method equal -  比较两个数组的值是否相等
- * @method deleteValue -  从数组里删除第一个相应值，返回新数组
- * @method deleteValueAll -  从数组里删除所有相应值，返回新数组
- * @method deleteSomeExcept -  从数组里删除所有不匹配元素，返回新数组
- * @method map -  封装原生map
- */
+var index_1 = require("../object/index");
 var _this = null;
 var array = _this = {
     /* 比较相关函数 */
@@ -90,28 +37,11 @@ var array = _this = {
     compareLength: function (firstArray, secondArray) {
         return firstArray.length - secondArray.length;
     },
-    equal: function (firstArray, secondArray) {
-        if (_this.compareLength(firstArray, secondArray) !== 0) {
-            return false;
-        }
-        for (var i = 0; i < firstArray.length; i++) {
-            var firstValue = firstArray[i];
-            var secondValue = secondArray[i];
-            if (typeof firstValue !== typeof secondValue) {
-                return false;
-            }
-            else {
-                if (firstValue instanceof Array && secondValue instanceof Array) {
-                    if (!_this.equal(firstValue, secondValue)) {
-                        return false;
-                    }
-                }
-                else if (firstArray[i] !== secondArray[i]) {
-                    return false;
-                }
-            }
-        }
-        return true;
+    shallowCompare: function (firstArray, secondArray) {
+        return index_1.default.shallowCompare(firstArray, secondArray);
+    },
+    deepCompare: function (firstArray, secondArray) {
+        return index_1.default.deepCompare(firstArray, secondArray);
     },
     /* 删除相关函数 */
     deleteItem: function (array, value) {
@@ -243,6 +173,81 @@ var fn = {
             }
             return result;
         };
+    },
+    debounce: function (fn, wait, immediate) {
+        var now = Date.now.bind(Date);
+        var lastTime = 0;
+        var timer = null;
+        var params = null;
+        var _this = null;
+        function later() {
+            var nowTime = now();
+            if (nowTime - lastTime < wait) {
+                var remainTime = wait - (nowTime - lastTime);
+                timer = setTimeout(later, remainTime);
+            }
+            else {
+                debouncer.result = fn.apply(_this, params);
+                timer = null;
+                _this = null;
+                params = null;
+            }
+        }
+        function execute() {
+            lastTime = now();
+            _this = this;
+            params = arguments;
+            try {
+                if (immediate && timer === null) {
+                    debouncer.result = fn.apply(_this, params);
+                }
+                return debouncer.result;
+            }
+            finally {
+                if (timer === null) {
+                    timer = setTimeout(later, wait);
+                }
+            }
+        }
+        var debouncer = {
+            execute: execute,
+            result: null,
+        };
+        return debouncer;
+    },
+    throttle: function (fn, wait, _a) {
+        var _b = _a === void 0 ? {
+            isExecuteAtStart: true,
+            isExecuteAtEnd: true,
+        } : _a, _c = _b.isExecuteAtStart, isExecuteAtStart = _c === void 0 ? true : _c, _d = _b.isExecuteAtEnd, isExecuteAtEnd = _d === void 0 ? true : _d;
+        var timer = null;
+        var _this = null;
+        var params = null;
+        function execute() {
+            _this = this;
+            params = arguments;
+            if (isExecuteAtStart && timer === null) {
+                executor.result = fn.apply(_this, params);
+                _this = null;
+                params = null;
+            }
+            if (isExecuteAtEnd) {
+                if (timer === null) {
+                    timer = setTimeout(function () {
+                        executor.result = fn.apply(_this, params);
+                        _this = null;
+                        params = null;
+                        timer = null;
+                    }, wait);
+                }
+            }
+            return executor.result;
+        }
+        var executor = {
+            execute: execute,
+            result: null
+        };
+        return executor;
     }
 };
 exports.default = fn;
@@ -261,34 +266,29 @@ var math = {
             x: offsetX + radius * Math.cos(radian),
             y: offsetY + radius * Math.sin(radian),
         }); };
-    }
+    },
+    add: function () {
+        var numbers = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            numbers[_i] = arguments[_i];
+        }
+        function getDecimalLength(n) {
+            var temp = n.toString().split('.');
+            return temp[temp.length - 1].length;
+        }
+        function addTwoNumber(a, b) {
+            var firstLenth = getDecimalLength(a);
+            var secondeLenth = getDecimalLength(a);
+            var biggerLength = firstLenth > secondeLenth ? firstLenth : secondeLenth;
+            var n = Math.pow(10, biggerLength);
+            return (a * n + b * n) / n;
+        }
+        return numbers.reduce(function (previous, current) {
+            return addTwoNumber(previous, current);
+        });
+    },
 };
 exports.default = math;
-//# sourceMappingURL=index.js.map
-"use strict";
-/// <reference path="index.d.ts"/>
-Object.defineProperty(exports, "__esModule", { value: true });
-/**
- * @obj
- * @desc  数字的相关方法。所有函数不会改变实参的值，会返回操作后的结果。
- * @method  random -  返回一个可以产生符合条件的随机数的函数
- */
-var number = {
-    createRandomFunction: function (min, max, float) {
-        if (min === void 0) { min = 0; }
-        return function () {
-            var _a;
-            if (min > max) {
-                _a = [max, min], min = _a[0], max = _a[1];
-            }
-            if (float || min % 1 || max % 1) {
-                return min + Math.random() * (max - min);
-            }
-            return min + Math.floor(Math.random() * (max - min + 1));
-        };
-    }
-};
-exports.default = number;
 //# sourceMappingURL=index.js.map
 "use strict";
 /// <reference path="index.d.ts"/>
@@ -367,6 +367,31 @@ exports.default = net;
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * @obj
+ * @desc  数字的相关方法。所有函数不会改变实参的值，会返回操作后的结果。
+ * @method  random -  返回一个可以产生符合条件的随机数的函数
+ */
+var number = {
+    createRandomFunction: function (min, max, float) {
+        if (min === void 0) { min = 0; }
+        return function () {
+            var _a;
+            if (min > max) {
+                _a = [max, min], min = _a[0], max = _a[1];
+            }
+            if (float || min % 1 || max % 1) {
+                return min + Math.random() * (max - min);
+            }
+            return min + Math.floor(Math.random() * (max - min + 1));
+        };
+    }
+};
+exports.default = number;
+//# sourceMappingURL=index.js.map
+"use strict";
+/// <reference path="index.d.ts"/>
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * @obj
  * @desc 操作字符串的相关方法。所有函数不会改变实参的值，会返回操作后的结果。
  * @method replace - 传入匹配规则参数，返回一个符合改匹配规则的函数
  * @method split - 返回分割该字符的函数
@@ -395,8 +420,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @method valueEqual - 判断两个对象的值是否相等
  */
 var _this = null;
-var object = _this = {
-    valueEqual: function (firstObj, secondObj) {
+var object = (_this = {
+    shallowCompare: function (firstObj, secondObj) {
+        for (var key in firstObj) {
+            if (!firstObj.hasOwnProperty(key) ||
+                !secondObj.hasOwnProperty(key) ||
+                firstObj[key] !== secondObj[key]) {
+                return false;
+            }
+        }
+        return true;
+    },
+    deepCompare: function (firstObj, secondObj) {
         var firstEntries = Object.entries(firstObj);
         var secondEntries = Object.entries(secondObj);
         if (firstEntries.length !== secondEntries.length) {
@@ -410,7 +445,7 @@ var object = _this = {
                 return false;
             }
             else if (typeof firstValue === 'object' && firstValue !== null) {
-                if (!_this.valueEqual(firstValue, secondValue)) {
+                if (!_this.deepCompare(firstValue, secondValue)) {
                     return false;
                 }
             }
@@ -425,7 +460,7 @@ var object = _this = {
     has: function (object, key) {
         return object[key] !== undefined;
     }
-};
+});
 exports.default = object;
 //# sourceMappingURL=index.js.map
 "use strict";
