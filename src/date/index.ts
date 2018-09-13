@@ -1,5 +1,5 @@
 /// <reference path="index.d.ts"/>
-import string from '../string/index';
+import { replace } from '../string/index';
 
 /**
  * @obj
@@ -16,7 +16,7 @@ const date: DateModule = {
  * @return {function} 返回一个需要传入毫秒数作为参数的函数。
    */
   createFormatDate: function (format: string = 'YYYY/MM/DD hh:mm'): (ms: number) => string {
-    let replaceFormat = string.replace(/[a-zA-Z]+/g);
+    let replaceFormat = replace(/[a-zA-Z]+/g);
 
     return (ms: number): string => {
       const dateFunctions: DateFnNameObj = {
@@ -59,3 +59,4 @@ const date: DateModule = {
 };
 
 export default date;
+export const createFormatDate = date.createFormatDate;

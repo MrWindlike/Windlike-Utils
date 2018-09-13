@@ -23,4 +23,6 @@ import verification from './verification/index';
  * @part  string -  字符串
  * @part  verification -  验证
  */
+export const utils = { array, date, fn, math, number, net, object, string, verification };
+export default utils;
 export { array, date, fn, math, number, net, object, string, verification };

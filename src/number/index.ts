@@ -21,3 +21,4 @@ const number: NumberModule = {
 };
 
 export default number;
+export const createRandomFunction = number.createRandomFunction;

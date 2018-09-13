@@ -52,3 +52,6 @@ const object: ObjectModule = (_this = {
 });
 
 export default object;
+export const shallowCompare = object.shallowCompare;
+export const deepCompare = object.deepCompare;
+export const has = object.has;

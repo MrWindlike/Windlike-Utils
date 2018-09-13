@@ -51,6 +51,16 @@ npm install windlike-utils --save
   // }
   ```
 
+<a name="2.1.6"></a>
+# 2.1.6 (2018-09-13)
+
+## Support Tree-Shaking
+```JS
+import { add } from 'windlike-utils/dist/math';
+
+add(0.1, 0.2);  // 0.3
+```
+
 <a name="2.1.0"></a>
 # 2.1.0 (2018-09-05)
 

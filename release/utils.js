@@ -19,6 +19,21 @@ var index_8 = require("./string/index");
 exports.string = index_8.default;
 var index_9 = require("./verification/index");
 exports.verification = index_9.default;
+/**
+ * @obj
+ * @desc  工具实例。部分函数使用到ES6的语法，请确保你的浏览器支持。
+ * @part  array -  数组
+ * @part  date -  日期
+ * @part  fn -  函数
+ * @part  math -  数学
+ * @part  number -  数字
+ * @part  net -  网络
+ * @part  object -  对象
+ * @part  string -  字符串
+ * @part  verification -  验证
+ */
+exports.utils = { array: index_1.default, date: index_2.default, fn: index_3.default, math: index_4.default, number: index_5.default, net: index_6.default, object: index_7.default, string: index_8.default, verification: index_9.default };
+exports.default = exports.utils;
 //# sourceMappingURL=utils.js.map
 "use strict";
 /// <reference path="index.d.ts"/>
@@ -38,10 +53,10 @@ var array = _this = {
         return firstArray.length - secondArray.length;
     },
     shallowCompare: function (firstArray, secondArray) {
-        return index_1.default.shallowCompare(firstArray, secondArray);
+        return index_1.shallowCompare(firstArray, secondArray);
     },
     deepCompare: function (firstArray, secondArray) {
-        return index_1.default.deepCompare(firstArray, secondArray);
+        return index_1.deepCompare(firstArray, secondArray);
     },
     /* 删除相关函数 */
     deleteItem: function (array, value) {
@@ -64,6 +79,13 @@ var array = _this = {
     }
 };
 exports.default = array;
+exports.compareLength = array.compareLength;
+exports.shallowCompare = array.shallowCompare;
+exports.deepCompare = array.deepCompare;
+exports.deleteItem = array.deleteItem;
+exports.deleteItems = array.deleteItems;
+exports.deleteItemsExcept = array.deleteItemsExcept;
+exports.map = array.map;
 //# sourceMappingURL=index.js.map
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -85,7 +107,7 @@ var date = {
      */
     createFormatDate: function (format) {
         if (format === void 0) { format = 'YYYY/MM/DD hh:mm'; }
-        var replaceFormat = index_1.default.replace(/[a-zA-Z]+/g);
+        var replaceFormat = index_1.replace(/[a-zA-Z]+/g);
         return function (ms) {
             var dateFunctions = {
                 'Y': 'getFullYear',
@@ -125,6 +147,7 @@ var date = {
     }
 };
 exports.default = date;
+exports.createFormatDate = date.createFormatDate;
 //# sourceMappingURL=index.js.map
 "use strict";
 /// <reference path="index.d.ts"/>
@@ -251,6 +274,10 @@ var fn = {
     }
 };
 exports.default = fn;
+exports.curry = fn.curry;
+exports.compose = fn.compose;
+exports.debounce = fn.debounce;
+exports.throttle = fn.throttle;
 //# sourceMappingURL=index.js.map
 "use strict";
 /// <reference path="index.d.ts"/>
@@ -289,6 +316,9 @@ var math = {
     },
 };
 exports.default = math;
+exports.createSin = math.createSin;
+exports.createGetPointOnCircle = math.createGetPointOnCircle;
+exports.add = math.add;
 //# sourceMappingURL=index.js.map
 "use strict";
 /// <reference path="index.d.ts"/>
@@ -361,6 +391,8 @@ var net = {
     }
 };
 exports.default = net;
+exports.parseParams = net.parseParams;
+exports.parseUrl = net.parseUrl;
 //# sourceMappingURL=index.js.map
 "use strict";
 /// <reference path="index.d.ts"/>
@@ -386,30 +418,7 @@ var number = {
     }
 };
 exports.default = number;
-//# sourceMappingURL=index.js.map
-"use strict";
-/// <reference path="index.d.ts"/>
-Object.defineProperty(exports, "__esModule", { value: true });
-/**
- * @obj
- * @desc 操作字符串的相关方法。所有函数不会改变实参的值，会返回操作后的结果。
- * @method replace - 传入匹配规则参数，返回一个符合改匹配规则的函数
- * @method split - 返回分割该字符的函数
- * @method match - 返回匹配该正则的函数
- */
-var _this = null;
-var string = _this = {
-    replace: function (match) {
-        return function (str, substitute) { return str.replace(match, substitute); };
-    },
-    split: function (char) {
-        return function (str) { return str.split(char); };
-    },
-    match: function (regexp) {
-        return function (str) { return str.match(regexp); };
-    }
-};
-exports.default = string;
+exports.createRandomFunction = number.createRandomFunction;
 //# sourceMappingURL=index.js.map
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -462,6 +471,36 @@ var object = (_this = {
     }
 });
 exports.default = object;
+exports.shallowCompare = object.shallowCompare;
+exports.deepCompare = object.deepCompare;
+exports.has = object.has;
+//# sourceMappingURL=index.js.map
+"use strict";
+/// <reference path="index.d.ts"/>
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * @obj
+ * @desc 操作字符串的相关方法。所有函数不会改变实参的值，会返回操作后的结果。
+ * @method replace - 传入匹配规则参数，返回一个符合改匹配规则的函数
+ * @method split - 返回分割该字符的函数
+ * @method match - 返回匹配该正则的函数
+ */
+var _this = null;
+exports.string = _this = {
+    replace: function (match) {
+        return function (str, substitute) { return str.replace(match, substitute); };
+    },
+    split: function (char) {
+        return function (str) { return str.split(char); };
+    },
+    match: function (regexp) {
+        return function (str) { return str.match(regexp); };
+    }
+};
+exports.default = exports.string;
+exports.replace = exports.string.replace;
+exports.split = exports.string.split;
+exports.match = exports.string.match;
 //# sourceMappingURL=index.js.map
 "use strict";
 /// <reference path="index.d.ts"/>
@@ -474,7 +513,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @method  check -  返回验证是否匹配该类型的函数
  */
 var _this = null;
-var verification = _this = {
+exports.verification = _this = {
     _phoneRE: /^(13[0-9]|15[012356789]|18[0-9]|17[678]|14[57])[0-9]{8}$/,
     _emailRE: /^([a-zA-Z0-9]+[_|_|.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|_|.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/,
     checkRe: function (re) {
@@ -490,5 +529,8 @@ var verification = _this = {
         return _this.checkRe(_this["_" + checkType + "RE"]);
     }
 };
-exports.default = verification;
+exports.default = exports.verification;
+exports.checkRe = exports.verification.checkRe;
+exports.checkLength = exports.verification.checkLength;
+exports.check = exports.verification.check;
 //# sourceMappingURL=index.js.map

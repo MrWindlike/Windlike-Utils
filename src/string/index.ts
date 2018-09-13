@@ -8,7 +8,7 @@
  * @method match - 返回匹配该正则的函数
  */
 let _this: StringModule = null;
-const string: StringModule = _this = {
+export const string: StringModule = _this = {
   replace: function (match: RegExp | string): (str: string, substitute: any) => string {
     return (str: string, substitute: any) => str.replace(match, substitute);
   },
@@ -21,3 +21,6 @@ const string: StringModule = _this = {
 };
 
 export default string;
+export const replace = string.replace;
+export const split = string.split;
+export const match = string.match;
