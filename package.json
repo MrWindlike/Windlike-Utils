@@ -1,8 +1,9 @@
 {
   "name": "windlike-utils",
-  "version": "2.1.0",
-  "description": "",
-  "main": "index.js",
+  "version": "2.1.6",
+  "description": "Windlike-Utils is a tool library developed based on functional programming ideas.",
+  "sideEffects": false,
+  "main": "./dist/utils.js",
   "scripts": {
     "test": "jest",
     "debug": "node --inspect-brk node_modules/jest/bin/jest.js --runInBand",
@@ -18,7 +19,10 @@
     "type": "git",
     "url": "git+https://github.com/MrWindlike/Windlike-Utils.git"
   },
-  "keywords": [],
+  "keywords": [
+    "utils",
+    "tool"
+  ],
   "author": "Windlike",
   "license": "ISC",
   "bugs": {

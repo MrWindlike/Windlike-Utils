@@ -8,7 +8,7 @@
  * @method  check -  返回验证是否匹配该类型的函数
  */
 let _this: VerificationModule = null;
-const verification: VerificationModule = _this = {
+export const verification: VerificationModule = _this = {
   _phoneRE: /^(13[0-9]|15[012356789]|18[0-9]|17[678]|14[57])[0-9]{8}$/,
   _emailRE: /^([a-zA-Z0-9]+[_|_|.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|_|.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/,
 
@@ -26,3 +26,6 @@ const verification: VerificationModule = _this = {
 };
 
 export default verification;
+export const checkRe = verification.checkRe;
+export const checkLength = verification.checkLength;
+export const check = verification.check;

@@ -140,3 +140,7 @@ const fn: FunctionModule = {
 };
 
 export default fn;
+export const curry = fn.curry;
+export const compose = fn.compose;
+export const debounce = fn.debounce;
+export const throttle = fn.throttle;

@@ -1,6 +1,9 @@
 /// <reference path="index.d.ts"/>
 
-import object from '../object/index';
+import {
+  shallowCompare as objectShallowCompare,
+  deepCompare as objectDeepCompare,
+} from '../object/index';
 
 let _this: ArrayModule = null;
 const array: ArrayModule = _this = {
@@ -16,10 +19,10 @@ const array: ArrayModule = _this = {
     return firstArray.length - secondArray.length;
   },
   shallowCompare: function <T>(firstArray: T[], secondArray: T[]): boolean {
-    return object.shallowCompare(firstArray, secondArray);
+    return objectShallowCompare(firstArray, secondArray);
   },
   deepCompare: function <T>(firstArray: T[], secondArray: T[]): boolean {
-    return object.deepCompare(firstArray, secondArray);
+    return objectDeepCompare(firstArray, secondArray);
   },
 
   /* 删除相关函数 */
@@ -46,3 +49,10 @@ const array: ArrayModule = _this = {
 };
 
 export default array;
+export const compareLength = array.compareLength;
+export const shallowCompare = array.shallowCompare;
+export const deepCompare = array.deepCompare;
+export const deleteItem = array.deleteItem;
+export const deleteItems = array.deleteItems;
+export const deleteItemsExcept = array.deleteItemsExcept;
+export const map = array.map;

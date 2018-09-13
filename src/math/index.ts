@@ -33,3 +33,6 @@ const math: MathModule = {
 };
 
 export default math;
+export const createSin = math.createSin;
+export const createGetPointOnCircle = math.createGetPointOnCircle;
+export const add = math.add;

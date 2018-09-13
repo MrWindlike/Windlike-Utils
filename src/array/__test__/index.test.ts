@@ -1,5 +1,4 @@
-import array from '../index';
-const {
+import {
   compareLength,
   shallowCompare,
   deepCompare,
@@ -7,7 +6,7 @@ const {
   deleteItems,
   deleteItemsExcept,
   map,
-} = array;
+} from '../index';
 
 describe('Compare Array\'s length.', () => {
   test('Equal', () => {

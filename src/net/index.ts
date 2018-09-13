@@ -79,3 +79,5 @@ const net: NetModule = {
 };
 
 export default net;
+export const parseParams = net.parseParams;
+export const parseUrl = net.parseUrl;
