@@ -17,8 +17,12 @@ const number: NumberModule = {
 
       return min + Math.floor(Math.random() * (max - min + 1));
     };
+  },
+  toThousands: function (n: number | string): string {
+    return (n + '').replace(/(?<!\.\d*)\B(?=(\d{3})+(?!\d))/g, ',');
   }
 };
 
 export default number;
 export const createRandomFunction = number.createRandomFunction;
+export const toThousands = number.toThousands;

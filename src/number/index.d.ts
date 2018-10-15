@@ -5,4 +5,5 @@
  */
 interface NumberModule {
   createRandomFunction: (min: number, max: number, float: boolean) => () => number;
+  toThousands: (n: number | string) => string;
 }
