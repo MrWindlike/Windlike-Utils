@@ -3,6 +3,7 @@
 import {
   shallowCompare as objectShallowCompare,
   deepCompare as objectDeepCompare,
+  get
 } from '../object/index';
 
 let _this: ArrayModule = null;
@@ -45,7 +46,33 @@ const array: ArrayModule = _this = {
   /* 原生封装 */
   map: function (fn: any): <T>(array: T[]) => T[] {
     return <T>(array: T[]) => array.map(fn);
-  }
+  },
+
+  /** 数组去重 */
+  removeDuplicates: function <T>(array: T[], key: string = ''): T[] {
+    const newArray: T[] = [];
+    const exist: T[] = [];
+
+    array.forEach((item) => {
+      if (typeof item === 'object') {
+        const value = get(item, key);
+
+        if (!exist.includes(value)) {
+          newArray.push(item);
+          exist.push(value);
+        }
+      } else {
+        if (!exist.includes(item)) {
+          newArray.push(item);
+          exist.push(item);
+        }
+      }
+
+
+    });
+
+    return newArray;
+  },
 };
 
 export default array;
@@ -56,3 +83,4 @@ export const deleteItem = array.deleteItem;
 export const deleteItems = array.deleteItems;
 export const deleteItemsExcept = array.deleteItemsExcept;
 export const map = array.map;
+export const removeDuplicates = array.removeDuplicates;

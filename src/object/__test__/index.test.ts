@@ -1,5 +1,5 @@
 import object from '../index';
-const { shallowCompare, deepCompare, has } = object;
+const { shallowCompare, deepCompare, has, get } = object;
 
 describe('Shallow compare.', () => {
   test('Equal.', () => {
@@ -122,4 +122,31 @@ describe('Is object has this key?', () => {
 
     expect(result).toBeFalsy();
   });
+});
+
+test('Get Object\'s Value.', () => {
+  const obj = {
+    key: 'value',
+    object: {
+      key: 'object',
+      child: {
+        key: 'child'
+      }
+    }
+  };
+
+  expect(deepCompare(get(obj), {
+    key: 'value',
+    object: {
+      key: 'object',
+      child: {
+        key: 'child'
+      }
+    }
+  })).toBeTruthy();
+  expect(get(obj, 'key')).toBe('value');
+  expect(get(obj, 'object.key')).toBe('object');
+  expect(get(obj, 'object.child.key')).toBe('child');
+  expect(get(obj, 'object.child.one')).toBe(null);
+  expect(get(obj, 'any.object.child')).toBe(null);
 });

@@ -7,4 +7,5 @@ interface ObjectModule {
   shallowCompare: (firstObj: AnyObject, secondObj: AnyObject) => boolean;
   deepCompare: (firstObj: AnyObject, secondObj: AnyObject) => boolean;
   has: (object: AnyObject, key: string) => boolean;
+  get: (obj: any, key?: string) => any;
 }

@@ -17,4 +17,5 @@ interface ArrayModule {
   deleteItems: <T>(array: T[], value: T) => T[];
   deleteItemsExcept: <T>(array: T[], exceptArray: T[]) => T[];
   map: <T>(fn: any) => (array: T[]) => T[];
+  removeDuplicates: <T>(array: T[], key?: string) => T[];
 }

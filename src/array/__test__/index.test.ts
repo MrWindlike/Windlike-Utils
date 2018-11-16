@@ -6,6 +6,7 @@ import {
   deleteItems,
   deleteItemsExcept,
   map,
+  removeDuplicates
 } from '../index';
 
 describe('Compare Array\'s length.', () => {
@@ -136,4 +137,34 @@ describe('Map Array.', () => {
 
     expect(shallowCompare(map(plusOne)(array), [2, '19', 10, 7])).toBeTruthy();
   });
+});
+
+test('Remove Duplicates.', () => {
+  const nums = [1, 9, 9, 6, 0, 7, 1, 1];
+  const objects = [
+    {
+      key: 'value'
+    },
+    {
+      key: 'val'
+    },
+    {
+      key: 'value'
+    },
+    {
+      child: {
+        key: 'value'
+      }
+    }
+  ];
+
+  expect(deepCompare(removeDuplicates(nums), [1, 9, 6, 0, 7])).toBeTruthy();
+  expect(deepCompare(
+    removeDuplicates(objects, 'key'),
+    [
+      { key: 'value' },
+      { key: 'val' },
+      { child: { key: 'value' } },
+    ]
+  )).toBeTruthy();
 });

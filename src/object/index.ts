@@ -46,8 +46,29 @@ const object: ObjectModule = (_this = {
 
     return true;
   },
-  has: function (object: AnyObject, key: string): boolean {
+  has: function (object: AnyObject, key?: string): boolean {
     return object[key] !== undefined;
+  },
+  get: function (obj: any, key: string = ''): any {
+    const keys: string[] = key.split('.');
+    let value = null;
+    let current = obj;
+
+    for (let currentKey of keys) {
+      if (currentKey) {
+        if (typeof current === 'object' && _this.has(current, currentKey)) {
+          current = current[currentKey];
+        } else {
+          return value as null;
+        }
+      } else {
+        break;
+      }
+    }
+
+    value = current;
+
+    return value;
   }
 });
 
@@ -55,3 +76,4 @@ export default object;
 export const shallowCompare = object.shallowCompare;
 export const deepCompare = object.deepCompare;
 export const has = object.has;
+export const get = object.get;
